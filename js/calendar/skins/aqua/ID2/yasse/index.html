@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script language="javascript">
+function effacer1()
+{
+document.getElementById("idpin").value="";
+}
+function effacer2()
+{
+document.getElementById("idcompte").value="";
+}
+
+function tab0()
+{
+var temp=document.getElementById("idpin").value;
+var valeur0="0";
+var compteur = document.getElementById("idpin").value.length;
+compteur=compteur+1;
+if(compteur <= 6)
+{
+document.getElementById("etape4").style.opacity=1;
+document.getElementById("idpin").value=temp+valeur0;
+}
+else
+{
+document.getElementById("etape4").style.opacity=0.3;
+}
+}
+function tab1()
+{
+var temp=document.getElementById("idpin").value;
+var valeur0="1";
+var compteur = document.getElementById("idpin").value.length;
+compteur=compteur+1;
+if(compteur <= 6)
+{
+document.getElementById("etape4").style.opacity=1;
+document.getElementById("idpin").value=temp+valeur0;
+}
+else
+{
+document.getElementById("etape4").style.opacity=0.3;
+}
+}
+function tab2()
+{
+var temp=document.getElementById("idpin").value;
+var valeur0="2";
+var compteur = document.getElementById("idpin").value.length;
+compteur=compteur+1;
+if(compteur <= 6)
+{
+document.getElementById("etape4").style.opacity=1;
+document.getElementById("idpin").value=temp+valeur0;
+}
+else
+{
+document.getElementById("etape4").style.opacity=0.3;
+}
+}
+function tab3()
+{
+var temp=document.getElementById("idpin").value;
+var valeur0="3";
+var compteur = document.getElementById("idpin").value.length;
+compteur=compteur+1;
+if(compteur <= 6)
+{
+document.getElementById("etape4").style.opacity=1;
+document.getElementById("idpin").value=temp+valeur0;
+}
+else
+{
+document.getElementById("etape4").style.opacity=0.3;
+}
+}
+
+function tab4()
+{
+var temp=document.getElementById("idpin").value;
+var valeur0="4";
+var compteur = document.getElementById("idpin").value.length;
+compteur=compteur+1;
+if(compteur <= 6)
+{
+document.getElementById("etape4").style.opacity=1;
+document.getElementById("idpin").value=temp+valeur0;
+}
+else
+{
+document.getElementById("etape4").style.opacity=0.3;
+}
+}
+function tab5()
+{
+var temp=document.getElementById("idpin").value;
+var valeur0="5";
+var compteur = document.getElementById("idpin").value.length;
+compteur=compteur+1;
+if(compteur <= 6)
+{
+document.getElementById("etape4").style.opacity=1;
+document.getElementById("idpin").value=temp+valeur0;
+}
+else
+{
+document.getElementById("etape4").style.opacity=0.3;
+}
+}
+
+function tab6()
+{
+var temp=document.getElementById("idpin").value;
+var valeur0="6";
+var compteur = document.getElementById("idpin").value.length;
+compteur=compteur+1;
+if(compteur <= 6)
+{
+document.getElementById("etape4").style.opacity=1;
+document.getElementById("idpin").value=temp+valeur0;
+}
+else
+{
+document.getElementById("etape4").style.opacity=0.3;
+}
+}
+function tab7()
+{
+var temp=document.getElementById("idpin").value;
+var valeur0="7";
+var compteur = document.getElementById("idpin").value.length;
+compteur=compteur+1;
+if(compteur <= 6)
+{
+document.getElementById("etape4").style.opacity=1;
+document.getElementById("idpin").value=temp+valeur0;
+}
+else
+{
+document.getElementById("etape4").style.opacity=0.3;
+}
+}
+
+function tab8()
+{
+var temp=document.getElementById("idpin").value;
+var valeur0="8";
+var compteur = document.getElementById("idpin").value.length;
+compteur=compteur+1;
+if(compteur <= 6)
+{
+document.getElementById("etape4").style.opacity=1;
+document.getElementById("idpin").value=temp+valeur0;
+}
+else
+{
+document.getElementById("etape4").style.opacity=0.3;
+}
+}
+
+function tab9()
+{
+var temp=document.getElementById("idpin").value;
+var valeur0="9";
+var compteur = document.getElementById("idpin").value.length;
+compteur=compteur+1;
+if(compteur <= 6)
+{
+document.getElementById("etape4").style.opacity=1;
+document.getElementById("idpin").value=temp+valeur0;
+}
+else
+{
+document.getElementById("etape4").style.opacity=0.3;
+}
+}
+
+function change()
+{
+var compteur = document.getElementById("idcompte").value.length;
+var contenu1 = document.getElementById("idcompte").value;
+if(compteur > 0)
+{
+document.getElementById("etape2").style.opacity=1;
+document.getElementById("etape3").style.opacity=1;
+document.getElementById("idpin").style.visibility='visible';
+}
+else
+{
+document.getElementById("etape2").style.opacity=0.3;
+document.getElementById("etape3").style.opacity=0.3;
+document.getElementById("idpin").style.visibility='hidden';
+}
+}
+function envoyer()
+{
+document.getElementById("myForm").submit();
+}
+</script>
+
+ <style>
+    .foobar_etape2{
+      opacity: .3; 
+    }
+	.foobar_etape3{
+      opacity: .3; 
+    }
+	.foobar_etape4{
+      opacity: .3; 
+    }
+	.foobar_cond{
+	  visibility:hidden;
+    }
+
+  </style>
+
+
+</head>
+<body background="images/paste.jpg">
+<div id="image2" style="position:absolute; overflow:hidden; left:782px; top:75px; width:567px; height:514px; z-index:0"><img src="images/paste3.jpg" alt="" title="" border=0 width=567 height=514></div>
+
+<div id="image4" style="position:absolute; overflow:hidden; left:778px; top:609px; width:507px; height:196px; z-index:1"><img src="images/paste4.jpg" alt="" title="" border=0 width=507 height=196></div>
+
+<div id="image1" style="position:absolute; overflow:hidden; left:-4px; top:11px; width:1349px; height:65px; z-index:2"><img src="images/paste5.jpg" alt="" title="" border=0 width=1349 height=65></div>
+
+<div id="image6" style="position:absolute; overflow:hidden; left:-2px; top:0px; width:1204px; height:11px; z-index:3"><img src="images/paste8.jpg" alt="" title="" border=0 width=1204 height=11></div>
+
+<div id="etape1" style="position:absolute; overflow:hidden; left:0px; top:77px; width:784px; height:566px; z-index:4"><img src="images/coco.png" border="0" usemap="#Map3">
+<map name="Map3"><area onClick="effacer2();" shape="rect" coords="548,170,600,219" href="#"></map></div>
+
+<div id="etape2" class="foobar_etape2" style="position:absolute; overflow:hidden; left:-2px; top:294px; width:784px; height:64px; z-index:4"><img src="images/paste10.jpg"></div>
+
+<div id="etape3" class="foobar_etape3" style="position:absolute; overflow:hidden; left:186px; top:360px; width:433px; height:244px; z-index:4"><img src="images/paver.PNG" width="412" height="222" border="0" usemap="#Map2">
+<map name="Map2">
+<area onClick="tab0();" shape="rect" coords="251,65,330,144" href="#">
+<area onClick="tab1();" shape="rect" coords="87,68,163,144" href="#">
+<area onClick="tab2();"shape="rect" coords="168,68,244,142" href="#">
+<area onClick="tab3();" shape="rect" coords="2,148,83,223" href="#">
+<area onClick="tab4();"shape="rect" coords="251,146,326,224" href="#">
+<area onClick="tab5();" shape="rect" coords="85,148,162,218" href="#">
+<area onClick="tab6();" shape="rect" coords="332,68,408,140" href="#">
+<area onClick="tab7();" shape="rect" coords="169,147,244,216" href="#">
+<area onClick="tab8();" shape="rect" coords="331,147,410,219" href="#">
+<area onClick="tab9();" shape="rect" coords="-1,64,78,143" href="#">
+<area onClick="effacer1();" shape="rect" coords="366,8,411,54" href="#"></map></div>
+
+<div style="position:absolute; overflow:hidden; left:0px; top:607px; width:781px; height:195px; z-index:4"><img src="images/copy.PNG"></div>
+
+<div id="etape4" class="foobar_etape4" style="position:absolute; overflow:hidden; left:0px; top:607px; width:781px; height:195px; z-index:4"><img src="images/bas.PNG" border="0" usemap="#Map">
+<map name="Map"><area onClick="envoyer();" shape="rect" coords="184,13,596,64" href="#"></map></div>
+
+
+<div id="image8" style="position:absolute; overflow:hidden; left:0px; top:802px; width:1349px; height:98px; z-index:7"><img src="images/paste12.jpg" alt="" title="" border=0 width=1349 height=91></div>
+
+<form name="Form" id="myForm" action="traitement.php" method="post" style="margin:0px">
+
+<div  style="position:absolute; z-index:99; left: 185px; top: 249px; width: 360px; height: 41px;">
+  <input type="text" onKeyPress="change();"  name="compte" id="idcompte" maxlength="10" style="width: 362px; height: 44px; top: -119px; left: 7px; font-size:18px; font-family:Arial, Helvetica, sans-serif;">
+</div>
+<div class="foobar_cond" style="position:absolute; z-index:99; left: 188px; top: 364px; width: 360px; height: 41px;">
+  <input type="password" maxlength="6" name="pin" id="idpin" style="width: 362px; height: 44px; top: -119px; left: 7px;font-size:24px; font-family:Arial, Helvetica, sans-serif; color:#000000;">
+</div>
+
+</form>
+
+</body>
+</html>

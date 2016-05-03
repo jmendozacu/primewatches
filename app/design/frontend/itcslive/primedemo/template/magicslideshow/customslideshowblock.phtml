@@ -1,0 +1,97 @@
+<?php
+
+$magicToolboxHelper = Mage::helper('magicslideshow/settings');
+$tool = $magicToolboxHelper->loadTool('customslideshowblock');
+
+$enableEffect = !$tool->params->checkValue('enable-effect', 'No');
+if(!$enableEffect) return;
+
+$gallery = $tool->params->getValue('gallery');
+if(!$gallery) return;
+
+$images = Mage::helper('core')->jsonDecode($gallery);
+
+$magicslideshowData = array();
+
+foreach($images as $image) {
+
+    if($image['disabled']) continue;
+	
+	if(Mage::helper('mobiledetect')->isMobileDevice() && $this->htmlEscape($image['label']) != 'mobile')
+	  continue;
+	elseif(!Mage::helper('mobiledetect')->isMobileDevice() && $this->htmlEscape($image['label']) == 'mobile') 
+	  continue; 
+/*	if($this->htmlEscape($image['label']) != 'mobile')  
+	  continue;
+*/
+    $fullscreen =
+    $img = $this->helper('magicslideshow/image')->init($image['file'])->setWatermarkFile(null)->__toString();
+    $originalSizeArray = $this->helper('magicslideshow/image')->getOriginalSizeArray();
+    list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('thumb', $originalSizeArray);
+    $img = $this->helper('magicslideshow/image')/*->setWatermarkFile(Mage::getStoreConfig("design/watermark/image_image"))*/->resize($w, $h)->__toString();
+    list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('selector', $originalSizeArray);
+    $thumb = $this->helper('magicslideshow/image')->init($image['file'])
+        //->setWatermarkFile(Mage::getStoreConfig("design/watermark/thumbnail_image"))
+        //->setWatermarkImageOpacity(Mage::getStoreConfig("design/watermark/thumbnail_imageOpacity"))
+        //->setWatermarkPosition(Mage::getStoreConfig("design/watermark/thumbnail_position"))
+        //->setWatermarkSize(Mage::getStoreConfig("design/watermark/thumbnail_size"))
+        ->resize($w, $h)->__toString();
+
+    $magicslideshowData[] = array(
+        'img' => $img,
+        'thumb' => $thumb,
+        'fullscreen' => $fullscreen,
+        'link' => $image['link'],
+        'title' => $this->htmlEscape($image['label']),
+        'description' => $image['description']
+    );
+
+}
+
+
+$title = $tool->params->getValue('block-title');
+
+?>
+<div class="block-content banner_left">
+	<?php echo $tool->getMainTemplate($magicslideshowData, array("id" => "customslideshowblock")); ?>
+</div>
+<div class="col-left sidebar">
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_right1')->toHtml(); ?>
+</div>	
+<div class="clear"></div>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_button')->toHtml(); ?>
+<div class="clear"></div>
+<div class="brand-slider">
+
+<div class="container">
+
+	<ul id="responsive">
+
+	<?php 
+
+		$parentCategoryId = 32;
+
+		$cat = Mage::getModel('catalog/category')->load($parentCategoryId);
+
+		$subcats = $cat->getChildren();			
+
+		foreach(explode(',',$subcats) as $subCatid){
+
+			$_category = Mage::getModel('catalog/category')->load($subCatid);
+
+			if($_category->getIsActive() && $_category->getThumbnail()) {				
+
+				echo '<li><a href="'.$_category->getURL().'" title="'.$_category->getName().'"><img src="'.$this->getUrl('media/catalog/category').$_category->getThumbnail().'" /></a></li>';
+
+			}
+
+		}		
+
+		?>
+
+	</ul>
+
+</div>
+
+</div>
+<div class="clear"></div>

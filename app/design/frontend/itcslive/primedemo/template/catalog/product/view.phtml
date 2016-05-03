@@ -1,0 +1,294 @@
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+   var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>  
+
+<div class="product-view">
+  <div class="product-essential">
+<div class="page-title category-title desktop-none">
+     <div class="back-arrow"><a href="javascript:window.history.back();" class="back-to-history">back</a></div>
+    <div class="heading-brand"><h1><span><?php echo $_product->getAttributeText('specialbrands'); ?></span></h1></div>
+	<div class="grid-wrap">
+	<i class="fa fa-share-alt fontshare" aria-hidden="true"></i>
+	</div>
+</div>
+<?php $producturl =  $_product->getProductUrl(); ?>
+<div class="sharing-options" style="display: none;">
+		<ul class="social-icons standard">
+        	<li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $producturl; ?>" class="st_fb" target="_blank"></a></li>
+            <li><a href="https://twitter.com/share?url=<?php echo $producturl; ?>&amp;&amp;via=ThePrime&amp;&amp;text=<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>Model: #<?php echo $_product->getSku(); ?>" class="st_tweet" target="_blank"></a></li>
+            <li><a href="https://plus.google.com/share?url=<?php echo $producturl; ?>" class="st_gplus" target="_blank"></a></li>
+            <li><a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());" class="st_pint"></a></li>
+             <li class="wtapp"><span class="wt_app"><iframe width="15" height="16" scrolling="no" style="border: 0px; overflow: hidden;"></iframe></span></li>
+        </ul>
+        </div>
+
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+      <?php echo $this->getBlockHtml('formkey') ?>
+      <div class="no-display">
+        <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+        <input type="hidden" name="related_product" id="related-products-field" value="" /> 
+      </div>
+      <div class="product_details">
+      <div class="col-main">
+      <div class="product_details_Top">
+        <div class="four_step_sec">
+          <ul>
+            <li><img src="<?php echo $this->getSkinUrl('images/pkl1.jpg');?>" alt="" /></li>
+            <li><img src="<?php echo $this->getSkinUrl('images/pkl2.jpg');?>" alt="" /></li>
+            <li><img src="<?php echo $this->getSkinUrl('images/pkl3.jpg');?>" alt="" /></li>
+            <li><img src="<?php echo $this->getSkinUrl('images/pkl4.jpg');?>" alt="" /></li>
+            <li><img src="<?php echo $this->getSkinUrl('images/pkl5.jpg');?>" alt="" /></li>
+          </ul>
+        </div>
+        <div class="shop_details_left"> <?php echo $this->getChildHtml('media') ?> </div>
+		
+        <div class="shop_details_right">
+          <div class="shop_details_right_details">
+			<p class="desktop-none">Model #:<?php echo $_product->getSku(); ?></p>
+            <h3><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h3>
+            <p class="mobile-none">Model #:<?php echo $_product->getSku(); ?></p>
+				
+            <?php echo $this->getReviewsSummaryHtml($_product, false, true)?> 
+			<?php echo $this->getChildHtml('alert_urls') ?> <?php echo $this->getChildHtml('product_type_data') ?> <?php echo $this->getTierPriceHtml() ?> <?php echo $this->getChildHtml('extrahint') ?>
+            <?php if (!$this->hasOptions()):?>
+            <div class="add-to-box">
+              <?php if($_product->isSaleable()): ?> 
+              <?php echo $this->getChildHtml('addtocart') ?>
+              <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+              <span class="or"><?php echo $this->__('OR') ?></span>
+              <?php endif; ?>
+              <?php endif; ?>
+              <?php echo $this->getChildHtml('addto') ?> </div>
+            <?php echo $this->getChildHtml('extra_buttons') ?>
+            <?php elseif (!$_product->isSaleable()): ?>
+            <div class="add-to-box"><?php echo $this->getChildHtml('addto') ?> </div>
+            <?php endif; ?>
+			<div class="pricon-outter">
+			<a class="pricon" href="tel:+919830315007">Call us</a>
+			</div>
+			
+					<div class=" list-common-row">
+						<div class="span6"><div class="icons"><i class="fa fa-check-square-o"></i>Free delivery across India</div> </div>
+						<div class="span6"><div class="icons"><i class="fa fa-check-square-o"></i>Authorised retailer and service center </div></div>
+					</div>
+            
+          </div>
+		  
+		<div class="shop_brnd_details-outer">
+          <div class="shop_brnd_details"> 
+		  
+		  <?php echo $this->getLayout()->createBlock('catalog/product_view_attributes', '', array('template'=> 'catalog/product/view/attributes.phtml'))->toHtml(); ?>
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+            <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+            <?php endif;?>
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+            <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+            <?php endif;?>
+          </div>
+			</div>
+        </div>
+      </div>
+    </form>
+    <script>
+		function hideselling(){
+			document.getElementById('enq').style.display = 'none';
+		}
+		function checkValidation()
+		{			
+			var cust_name = document.getElementById('cust_name').value;
+			var email= document.enquiry_form.email.value;
+			var phone = document.getElementById('phone').value;
+			var city = document.getElementById('city').value;
+			var comment = document.getElementById('comment').value;
+			var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i ;
+			
+			if(cust_name=="" || email =="" || phone=="" || city=="" || comment=="")
+			{
+				alert("All the fields are mandatory!");
+				return false;
+			}
+			else if(phone.length!=10)
+			{
+				alert("Phone number should be 10!");		
+				return false;
+			}
+			else if(email!="")
+			{
+				if (filter.test(email))
+				testresults=true;
+				else{
+				alert("Please input a valid email address!");
+				testresults=false;
+				}
+				return (testresults);
+			}
+			
+		}
+	</script>
+    <div id="enq" style="display: none;">
+      <?php
+	 $popimg = $this->helper('catalog/image')->init($_product, 'small_image')->resize('288');
+	 ?>
+      <div class="selling_frm" id="selling_frm">
+        <div class="light_img"> <img src="<?php echo $popimg;?>" id="prod_img" height="250px" width="265"> </div>
+        <div class="rhtpop">
+          <p class="light_pname" id="light_pname"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>-<?php echo $_product->getResource()->getAttribute('model_number')->getFrontend()->getValue($_product);?></p>
+          <p class="light_desc">Check our selling price for this watch</p>
+          <span class="light_sdesc">Please enter the following details to check our selling price of this product</span>
+          <form action="<?php echo $this->getUrl(''); ?>enquiry.php" id="enquiryForm" method="post" name="enquiry_form" onSubmit="return checkValidation();">
+            <div class="crs" onclick="hideselling();">x</div>
+            <div class="selling_frm_inner">
+              <input type="text" name="cust_name" id="cust_name" required placeholder=" name"/>
+			  <span><i class="fa fa-user"></i></span>
+            </div>
+            <div class="selling_frm_inner">
+              <input type="email" name="email" id="email" required placeholder="Email"/>
+			  <span><i class="fa fa-envelope"></i></span>
+            </div>
+            <div class="selling_frm_inner">
+              <input type="text" name="ext" id="ext" required placeholder="+91" maxlength="3" value="+91"/> 
+			  <input type="text" name="phone" id="phone" required placeholder="Phone" maxlength="10"/>
+			  <span><i class="fa fa-tty"></i></span>
+            </div>
+            <div class="selling_frm_inner">
+              <input type="text" name="city" id="city" required placeholder="City"/>
+            </div>
+            <div class="selling_frm_inner">
+              <input type="hidden" name="pname" id="pname" value="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>-<?php echo $_product->getResource()->getAttribute('model_number')->getFrontend()->getValue($_product);?>" />
+            </div>
+            <div class="selling_frm_inner">
+              <input type="submit" name="sub_enq" value="Send" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+        productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+                if (url) {
+                   form.action = url;
+                }
+                var e = null;
+                try {
+                    this.form.submit();
+                } catch (e) {
+                }
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+                if (button && button != 'undefined') {
+                    button.disabled = true;
+                }
+            }
+        }.bind(productAddToCartForm);
+        productAddToCartForm.submitLight = function(button, url){
+            if(this.validator) {
+                var nv = Validation.methods;
+                delete Validation.methods['required-entry'];
+                delete Validation.methods['validate-one-required'];
+                delete Validation.methods['validate-one-required-by-name'];
+                // Remove custom datetime validators
+                for (var methodName in Validation.methods) {
+                    if (methodName.match(/^validate-datetime-.*/i)) {
+                        delete Validation.methods[methodName];
+                    }
+                }
+                if (this.validator.validate()) {
+                    if (url) {
+                        this.form.action = url;
+                    }
+                    this.form.submit();
+                }
+                Object.extend(Validation.methods, nv);
+            }
+        }.bind(productAddToCartForm);
+    //]]>
+    </script>
+<div class="quick-help-wrap desktop-none">
+		<div class=row-fluid>
+			<div class="span6">
+				<div class="quick-share">
+				<i class="fa fa-upload"></i><br/>
+				Share <br/>
+				with your friends
+				</div>
+			</div>	
+					
+			<div class="span6">
+				<div class="quick-questions">
+				<a href="javascript:void(0);"><i class="fa fa-comment-o"><span>?</span></i><br/>Any<br/>Question?</a></div>
+			</div>
+		</div>
+	<div class="ask-question" style="display:none;">
+		 <div class="ui-dialog">
+		<h1>Any Question?</h1>
+		<p>For an exciting offer or information on this watch call our luxury watch experts on the following numbers (10 AM - 7 PM IST):</p>
+		 <p>Call Us : <a href="tel:+919830315007">+919830315007</a></p>
+		 <a href="javascript:void(0);" class="close close-ask"><i class="fa fa-times" aria-hidden="true"></i> Close </a>
+		 </div>
+		 
+	</div>
+	</div>
+		
+	</div>
+	<?php $youtube = $_helper->productAttribute($_product, nl2br($_product->getYoutube()), '') ?>
+      <div class="shop_descrption_Top">
+        <ul>
+         <?php if($youtube != '') {?> <li id="product_video" class="ptab"><a href="javascript:void(0);" class="selected">Video</a></li><?php } ?>
+          <li id="product_description" class="ptab"><a href="javascript:void(0);">Product Description</a></li>
+        </ul>
+      </div>
+      <div class="shop_descrption_Mid">
+		 <?php if($youtube != '') {?>
+        <div class="shop_descrption_Mid_innr" id="product_video_block">
+		  <iframe width="100%" height="300" src="https://www.youtube.com/embed/<?php echo $youtube; ?>?autoplay=1&controls=0&iv_load_policy
+=3&rel=0&showinfo=0&modestbranding=1" frameborder="0" loop=1 ></iframe>
+		</div>
+		<?php } ?>
+
+        <div class="shop_descrption_Mid_innr" id="product_description_block" style="display: none;"><?php echo $_helper->productAttribute($_product, nl2br($_product->getDescription()), '') ?> </div>
+      </div>
+    
+	
+    <!-- Store Location  Start -->
+	<?php 
+    $GetLocImage = $_helper->productAttribute($_product, nl2br($_product->getLocationImage()), '');
+	if (!empty($GetLocImage))
+    	 include_once('location.phtml');
+	 ?>
+    <!-- Store Location  End -->
+    <div class="bot_caro" id="product_reviews_block">
+      <div class="bot_caro_in">
+		<?php echo $this->getLayout()->createBlock('catalog/product_list_related')->setTemplate('catalog/product/list/related.phtml')->toHtml();?>
+		<div class="prod-review-form">
+			<?php echo $this->getLayout()->createBlock('review/product_view_list', '', array('template'=> 'review/product/view/list.phtml'))->toHtml(); ?> 
+			<?php echo $this->getLayout()->createBlock('review/form', '', array('template'=> 'catalog/product/view/tabs/review_form.phtml'))->toHtml(); ?> 
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    	function openPopUp2(){
+    		document.getElementById('enq').style.display="block";
+    	}
+		jQuery(".quick-questions").click(function(){
+	       jQuery(".ask-question").css('display','block');
+       });
+		jQuery(".close-ask").click(function(){
+	       jQuery(".ask-question").css('display','none');
+       });
+		jQuery(".fontshare").click(function(){
+	       jQuery(".sharing-options").css('display','block');
+       });
+</script>

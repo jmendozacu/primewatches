@@ -1,0 +1,17 @@
+<layout>
+    <CATEGORY_24>
+        <reference name="product_list_toolbar">
+            <action method="addPagerLimit"><mode>grid</mode><limit>30</limit></action>
+            <action method="addPagerLimit"><mode>list</mode><limit>30</limit></action>
+        </reference>
+    </CATEGORY_24>
+</layout>
+<layout>
+<catalog_category_view>
+  <reference name="root">
+    <action method="setTemplate">
+      <template>page/1columns.phtml</template> 
+    </action>
+  </reference>
+</catalog_category_view>
+</layout>

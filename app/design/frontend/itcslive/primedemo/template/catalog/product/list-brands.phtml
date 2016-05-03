@@ -1,0 +1,16 @@
+<div class="all-brands">
+	<ul class="brands">
+	<?php 
+		$parentCategoryId = 8;
+		$cat = Mage::getModel('catalog/category')->load($parentCategoryId);
+		$subcats = $cat->getChildren();			
+		$i=1;$count = 3;
+		foreach(explode(',',$subcats) as $subCatid){			
+			$_category = Mage::getModel('catalog/category')->load($subCatid);
+			if($_category->getIsActive() && $_category->getThumbnail()) {				
+				echo '<li><a href="'.$_category->getURL().'" title="'.$_category->getName().'"><img src="'.$this->getUrl('media/catalog/category').$_category->getThumbnail().'" /></a></li>';
+			}
+		}		
+		?>
+	</ul>
+</div>

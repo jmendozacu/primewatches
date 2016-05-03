@@ -1,0 +1,84 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+	  $width = 253;
+	  $height = 298;
+  if(Mage::helper('mobiledetect')->isMobileDevice())
+    {
+	  $width = 161;
+	  $height = 190;
+	} 
+?>
+<div class="page-title cart-heading">
+    <h1><?php echo $this->__('Shopping Cart is Empty') ?></h1>
+</div>
+<div class="cart-empty">
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+    <?php echo $this->getChildHtml('checkout_cart_empty_widget'); ?>
+    <p><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+    <p class="mobile-none"><?php echo $this->__('Click <a href="%s">here</a> to continue shopping.', $this->getContinueShoppingUrl()) ?></p>
+	<p class="continue"><?php echo $this->__('Shop from the trending watches shown below OR view the entire collection   <a href="%s">here</a> ', $this->getContinueShoppingUrl()) ?></p>
+    <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
+</div>
+<?php
+	$collection = Mage::getResourceModel('catalog/product_collection')
+    ->addFieldToFilter('created_at', array('gt' => date("Y-m-d H:i:s", strtotime('-7 day'))));
+	
+	foreach($collection as $product)
+	{
+		$obj = Mage::getModel('catalog/product');
+		$product = $obj->load($product->_data[entity_id]);
+		$popimg = $product->getImageUrl();
+	?>
+		<div class="prod-wrap span4 product_item">
+       	    	<a class="product_box_left" href="<?php echo $product->getProductUrl(); ?>" title="<?php echo $product->getName(); ?>"><img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize($width,$height) ?>" class="extra-padding"> </a>
+            	<div class="prod-pat-wrap product_box_right">                	                    
+                    <div class="prod-brnd">
+                    	<?php echo $product->getName(); ?>                 
+					</div>    
+                    <div class="prod-modl">
+						<?php echo $product->getSku(); ?> 
+                    </div>
+                    <div class="prod-mrp">
+					  <h4><?php echo 'MRP: Rs '.round($product->getPrice()); ?></h4>                   
+					</div>
+					<span class="emi">EMI available</span>
+					<div class="btn btn-success"><a href="#url" class="fancybox fancybox.iframe" onclick="openPopUp('<?php echo addslashes($product->getName());?>-<?php echo $product->getResource()->getAttribute('model_number')->getFrontend()->getValue($product);?>','<?php echo $popimg;?>');">Check our selling price</a></div>
+  			   </div>
+               
+                </div>
+<?php
+	}
+?>
+<div class="checkout-help-outer desktop-none">
+<div class="checkout-help-info">
+    <div class="help-icon"><i class="fa fa-phone"></i></div>
+    <div class="help-desc">
+      <h2 class="checkout-help">Need any Help?</h2>
+      <p><a href="tel:+919830315007" >click here</a> to call our checkout expert</p>
+    </div>
+  </div>
+  </div>
+  <div class="payment_type desktop-none"><img src="<?php echo $this->getSkinUrl('images/payment-icon.jpg');?>"></div>

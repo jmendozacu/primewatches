@@ -1,0 +1,21 @@
+<ol>
+<?php foreach ($this->getItems() as $_item):?>
+        <?php if ($_item->getIsCurrent() && $_item->getLabel() == "Brand"): ?>
+			<?php continue; ?>
+		<li>
+        <span class="adj-nav-category-current"><?php echo $_item->getLabel() ?></span>
+		</li>
+        <?php  else: ?>
+		<li>
+		<?php if (Mage::getStoreConfig('multilayer/multilayer/reload_categories')) { ?>
+                    <a id="cat-<?php echo $_item->getCategoryId()?>" href="<?php echo $this->htmlEscape($_item->getUri()) ?>" class="adj-nav-pad<?php echo $_item->getLevel()?>"><?php echo $_item->getLabel() ?></a>
+                <?php } else { ?>
+                        <a id="cat-<?php echo $_item->getCategoryId()?>" href="<?php echo $this->htmlEscape($_item->getUri()) ?>" class="ptech_multilayer_category adj-nav-pad<?php echo $_item->getLevel()?>"><?php echo $_item->getLabel() ?></a>
+                <?php }
+                   if($_item->getCount()): ?>  
+                     (<?php echo $_item->getCount() ?>) 
+            <?php endif ?>
+			</li>
+        <?php endif ?>
+<?php endforeach ?>
+</ol>

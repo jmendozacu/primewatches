@@ -1,0 +1,395 @@
+<?php
+
+
+
+/**
+
+
+
+ * Magento
+
+
+
+ *
+
+
+
+ * NOTICE OF LICENSE
+
+
+
+ *
+
+
+
+ * This source file is subject to the Academic Free License (AFL 3.0)
+
+
+
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+
+
+
+ * It is also available through the world-wide-web at this URL:
+
+
+
+ * http://opensource.org/licenses/afl-3.0.php
+
+
+
+ * If you did not receive a copy of the license and are unable to
+
+
+
+ * obtain it through the world-wide-web, please send an email
+
+
+
+ * to license@magentocommerce.com so we can send you a copy immediately.
+
+
+
+ *
+
+
+
+ * DISCLAIMER
+
+
+
+ *
+
+
+
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+
+
+
+ * versions in the future. If you wish to customize Magento for your
+
+
+
+ * needs please refer to http://www.magentocommerce.com for more information.
+
+
+
+ *
+
+
+
+ * @category    design
+
+
+
+ * @package     base_default
+
+
+
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+
+
+
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+
+
+
+ */
+
+
+
+?>
+
+
+
+<?php
+
+
+
+/**
+
+
+
+ * Product list template
+
+
+
+ *
+
+
+
+ * @see Mage_Catalog_Block_Product_List
+
+
+
+ */
+
+
+
+?>
+
+
+
+
+
+<?php
+
+
+
+      $_productCollection = Mage::getModel('catalog/category')->load(112)
+
+             ->getProductCollection()
+
+             ->addAttributeToSort('name', Varien_Data_Collection::SORT_ORDER_ASC);
+
+      $_helper = $this->helper('catalog/output');  
+
+	  //echo $_productCollection->getSize();
+
+?>
+
+
+
+<?php if(!$_productCollection->getSize()): ?>
+
+
+
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+
+
+
+<?php else: ?>
+
+
+
+	<div class="product_item_sec">
+
+
+
+    <?php $_iterator = 0; $i=1; ?>
+
+
+
+    <?php foreach ($_productCollection as $_product): ?>
+
+
+
+		<?php if($i++ == 5) break; ?>
+
+
+
+    	<?php $_product = Mage::getModel('catalog/product')->setStoreId($storeId)->load($_product->getId()); ?>
+
+
+
+    	<?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); 
+
+
+
+    	$discountprice=$_product->getPrice()-$_product->getFinalPrice();
+
+
+
+    $discount=($discountprice*100)/$_product->getPrice();?>	
+
+
+
+			<ol class="products-list" id="products-list">	
+
+
+
+					<div class="product_item">
+
+
+
+						
+
+
+
+						
+
+
+
+						<div class="product_box_left">
+
+
+
+					<a href="<?php echo $_product->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(259,298) ?>"  alt="" /></a>
+
+
+
+				 <?php if($discount!=0){?> <span class="save">Save <?php echo round($discount);?>%</span><?php } ?>
+
+
+
+				 </div>            
+
+
+
+				
+
+
+
+				<div class="product_box_right">
+
+
+
+					<h5 class="productname"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></h5>
+
+
+
+					<h6><?php echo $_product->getResource()->getAttribute('model_number')->getFrontend()->getValue($_product);?></h6>
+
+
+
+					<?php $reviewHelper = $this->getLayout()->createBlock('review/helper');
+
+
+
+	if($reviewHelper->getSummaryHtml($_product, 'short', false)!=''){				
+
+
+
+ echo $reviewHelper->getSummaryHtml($_product, 'short', false);
+
+
+
+	}else{
+
+
+
+?>					
+
+
+
+								<div class="ratings">
+
+
+
+                    <div class="rating-box">
+
+
+
+                <div class="rating" style="width:0%"></div>
+
+
+
+            </div>
+
+
+
+                <span class="amount"><a href="<?php echo $_product->getProductUrl() ?>">0 Review(s)</a></span>
+
+
+
+    </div>
+
+
+
+    <?php } ?><?php if($discount>0){?>
+
+
+        <div class="currency">
+			
+    	<h5 class="old-price"><span class="price-label">MRP:</span>
+		<span><?php echo Mage::helper('core')->formatPrice(round($_product->getPrice())); ?></span></h5>
+
+
+
+    	<h4 class="new-price"><span class="price-label">MRP:</span>
+		<span><?php echo Mage::helper('core')->formatPrice(round($_product->getFinalPrice())); ?></span></h4>
+		</div>
+
+
+
+    	<?php }else{ ?>
+
+			<div class="currency">
+
+			<h4><?php echo Mage::helper('core')->formatPrice(round($_product->getPrice())); ?></h4>
+			</div>
+
+
+		<?php } ?>
+
+
+
+			<ul class="icon_sec">
+
+
+
+				<li><a href="#" onclick="setLocation('<?php echo $this->helper('checkout/cart')->getAddUrl($_product) ?>')"><img src="<?php echo $this->getSkinUrl('images/icon1.png'); ?>" alt="" /></a></li>
+
+
+
+				<li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><img src="<?php echo $this->getSkinUrl('images/icon2.png'); ?>" alt="" /></a></li>
+
+
+
+				<li><a href="<?php echo $this->helper('catalog/product_compare')->getAddUrl($_product) ?>"><img src="<?php echo $this->getSkinUrl('images/icon3.png'); ?>" alt="" /></a></li>
+
+
+
+			</ul>
+
+
+
+			<?php $attribute_value = $_product->getResource()->getAttribute('inquiry')->getFrontend()->getValue($_product);
+
+
+
+			if($attribute_value=='No'){
+
+
+
+			?>
+
+<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>	
+
+			<?php }else{
+
+
+
+				$popimg = $this->helper('catalog/image')->init($_product, 'small_image')->resize('288');
+
+
+
+				?>
+
+
+
+			<a href="#url" onclick="openPopUp('<?php echo $_product->getName();?>-<?php echo $_product->getResource()->getAttribute('model_number')->getFrontend()->getValue($_product);?>','<?php echo $popimg;?>');">Ask For The Best Offer
+
+</a>	
+
+
+
+			<?php } ?>
+
+
+
+		</div>
+
+
+
+			</div>
+
+
+
+		</ol>	
+
+
+
+			<?php endforeach; ?>			
+
+
+
+			   <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>					
+
+
+
+	</div>						
+
+
+
+<?php endif; ?>

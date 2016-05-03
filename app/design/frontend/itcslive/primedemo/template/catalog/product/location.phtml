@@ -1,0 +1,159 @@
+	<?php 
+		$LocationBanner = $this->helper('catalog/image')->init($_product, 'location_image')->resize(1600, 420);
+	?>
+	<div class="product-details-back" style="background: url('<?php echo $LocationBanner; ?>');"><div class="catagory-watch">
+	<?php $LocationWatch = $this->helper('catalog/image')->init($_product, 'locationimagesmall')->resize(NULL, 420); ?>
+	<img src="<?php echo $LocationWatch; ?>" alt="" />
+	</div></div>
+	<div class="nearest-store">
+
+	<div class="store-detail">
+
+	<h3>Locations near you</h3>
+
+	<h2>Pick Up In Store</h2>
+
+	<p>This item is available for in-store pick-up.</p>
+
+	<form id="in-store-pickup" class="store-pickup" action="#">
+
+	<label>Enter your location to find a store:</label>
+
+	<div><input type="text" name="postalCode" id="pdpPostalCode" class="pdpPostalCode" placeholder="Enter Zip Code">
+
+	<button type="submit" class="pdpSubmitZip"><i class="fa fa-angle-right"></i></button></div>
+
+	</form>
+
+	</div>
+
+	<div class="right-coll">
+
+	<img src="<?php echo $this->getSkinUrl('images/store.jpg');?>" alt="" />
+
+	</div>
+
+	</div>
+
+
+
+<div class="location-search" style="display:none;">
+ <div class="ui-dialog">
+ <h1>PICK UP IN STORE</h1>
+ <form id="in-store-pickup" class="store-pickup" action="#">
+
+	<div><input type="text" name="poppostalCode" id="popPostalCode" class="pdpPostalCode" placeholder="Enter Zip Code">
+
+	<button type="submit" class="pdpSubmitZip-pop"><i class="fa fa-angle-right"></i></button></div>
+
+ </form>
+
+	<div class="location">Location: <span id="zipcode"></span></div>
+	<div class="store-shipping">Shipping Method: <span>Store Pickup</span> <span><i class="fa fa-inr" aria-hidden="true"></i> 0.00</span></div>
+	<div class="note">This item is available for in-store pick up at the following locations: </div>
+
+<div class="shoplocation" style="display:none;">
+	<div class="select-box  new-row " id="41">
+	<span class="name">THE PRIME-LUXURY WATCH BOUTIQUE</span>
+<span class="distance"></span>
+<br>
+<span>FORUM MALL</span>
+<br>
+	<span class="address1">10/3,ELGIN ROAD,3RD FLOOR,SHOP NO-307</span><br>
+	<span class="city">KOLKATA</span>
+	<span class="postalCode">-700020</span>
+	<br><span class="phone" phone="03322837185">(033) 2283-7185</span><br>
+		<span>
+			
+				Arrives in 2-3 business days
+			
+		</span>
+	
+
+</div>
+
+<div class="select-box  new-row select-box-right " id="42">
+
+
+	<span class="name">SWATCH BOUTIQUE</span>
+
+
+<span class="distance"></span>
+<br>
+<span>FORUM MALL</span>
+<br>
+	<span class="address1">10/3,ELGIN ROAD,3RD FLOOR,SHOP NO-111</span><br>
+	<span class="city">KOLKATA</span>
+	<span class="postalCode">-700020</span>
+	<br><span class="phone" phone="03340012659">(033) 40012659</span><br>
+		<span>
+			
+				Arrives in 2-3 business days
+			
+		</span>
+	
+
+</div>
+	<div class="select-box  new-row " id="43">
+
+
+	<span class="name">THE PRIME-LUXURY WATCH BOUTIQUE</span>
+
+
+<span class="distance"></span>
+<br>
+<span>CITY CENTRE MALL</span>
+<br>
+	<span class="address1">A-DC BLOCK,SECTOR-1,2ND FLOOR,SHOP NO.A203&204</span><br>
+	<span class="city">KOLKATA</span>
+	<span class="postalCode">-700064</span>
+	<br><span class="phone" phone="03323584333">(033)23584333/1510</span><br>
+		<span>
+			
+				Arrives in 2-3 business days
+			
+		</span>
+	
+
+</div>
+
+<div class="select-box  new-row select-box-right ">
+
+
+	<span class="name">THE PRIME-LUXURY WATCH BOUTIQUE</span>
+
+
+<span class="distance"></span>
+<br>
+<span>SOUTH CITY MALL</span>
+<br>
+	<span class="address1">375,P.A.S ROAD,GROUND FLOOR,SHOP NO-G 25</span><br>
+	<span class="city">KOLKATA</span>
+	<span class="postalCode">-700068</span>
+	<br><span class="phone" phone="03340643125">(033)4064-3125/2422-2462</span><br>
+		<span>
+			
+				Arrives in 2-3 business days
+			
+		</span>
+	
+
+</div>
+
+
+  
+  <div class="ispu-button-section">
+			<span>To pick up in store</span>
+			<a class="pdp-lightbox button " title="Pick Up In Store and Checkout " href="javascript:void(0);" id="product-addto-bag">Add to Bag</a>
+
+		</div>
+
+</div>	
+<div class="noshoplocation" style="display:none;">
+  Some Images will come here...
+</div>	
+  <a href="javascript:void(0);" class="close close-search"><i class="fa fa-times" aria-hidden="true"></i> Close </a>
+ </div>
+  
+
+</div>

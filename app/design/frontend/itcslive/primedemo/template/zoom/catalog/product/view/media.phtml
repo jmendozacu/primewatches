@@ -1,0 +1,71 @@
+
+
+<?php
+/*
+    Since at this point in Magento is not working mechanism of the change of image size aspect ratio.
+    In this case, use our Helper.
+*/
+	$_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+    $galleryImages = $_product->getMediaGalleryImages();
+
+$fixSize = Mage::getStoreConfig('sstech_zoom/general/fix_size'); // width or height
+$imgSize = Mage::getStoreConfig('sstech_zoom/general/image_size'); // 265px by default
+
+$effect = Mage::getStoreConfig('sstech_zoom/general/effect');
+$tint = Mage::getStoreConfig('sstech_zoom/general/tint');
+$conf = "zoomWidth:'".Mage::getStoreConfig('sstech_zoom/general/zoom_width')."', ".
+        "zoomHeight:'".Mage::getStoreConfig('sstech_zoom/general/zoom_height')."', ".
+        "position:'".Mage::getStoreConfig('sstech_zoom/general/position')."', ".
+        "adjustX:".Mage::getStoreConfig('sstech_zoom/general/adjust_x').", ".
+        "adjustY:".Mage::getStoreConfig('sstech_zoom/general/adjust_y').", ".
+        ($effect=="tint"?"tint:'".$tint."', "."tintOpacity:".Mage::getStoreConfig('sstech_zoom/general/tint_opacity').", ":"").
+        ($effect=="focus"?"softFocus:'true', ":"").        
+        "lensOpacity:".Mage::getStoreConfig('sstech_zoom/general/lens_opacity').", ".
+        "smoothMove:".Mage::getStoreConfig('sstech_zoom/general/smooth_move').", ".
+        "showTitle:'".(Mage::getStoreConfig('sstech_zoom/general/show_title')?"true":"false")."', ".
+        "titleOpacity:".Mage::getStoreConfig('sstech_zoom/general/title_opacity');
+?>
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+<script type="text/javascript">
+//<![CDATA[
+function jSelectImage(id) {
+    jq("#zoom img").attr("src", jq("#thumb"+id).attr("rel")).attr("title", jq("#thumb"+id+" img").attr("title"));
+	jq("#zoom").data("zoom").destroy();
+    jq("#zoom").attr("href", jq("#thumb"+id).attr("href")).CloudZoom();
+}
+//]]>
+</script>
+	<div id="image">
+        <?php $firtsImage = Mage::helper("zoom")->imageToVarien($_product); ?>
+        <a href='<?php echo $firtsImage->getUrl()?>' class='cloud-zoom' id='zoom' rel="<?php echo $conf ?>">
+          <img src="<?php echo Mage::helper("zoom")->getImage($_product, $firtsImage, $fixSize, $imgSize)?>" alt='<?php echo $this->htmlEscape($_product->getName()) ?>' style="<?php echo $fixSize.":".$imgSize ?>px" title="" />
+        </a>
+    </div>
+<?php else: ?>
+	<p class="product-image">
+		<?php
+			$_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(265).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+			echo $_helper->productAttribute($_product, $_img, 'image');
+		?>
+	</p>
+<?php endif; ?>
+
+<?php if (count($galleryImages) > 0): ?>
+<div class="more-views" style="display:<?php echo count($galleryImages)>1?"block":"none"?>">
+	<h4><?php echo $this->__('More Views') ?></h4>
+    <ul>
+    <?php $i=0;
+		foreach ($galleryImages as $_image): ?>
+        <li>
+        <a href="<?php echo $_image->url; ?>" class="" rel="<?php echo Mage::helper("zoom")->getImage($_product, $_image, $fixSize, $imgSize)?>" id="thumb<?php echo $i ?>" onclick="jSelectImage('<?php echo $i ?>'); return false;">
+        	<img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->resize(56); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+		</a>
+        </li>
+    <?php ++$i; endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>
+
+
+

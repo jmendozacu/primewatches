@@ -1,0 +1,364 @@
+<?php
+
+/**
+
+ * Magento
+
+ *
+
+ * NOTICE OF LICENSE
+
+ *
+
+ * This source file is subject to the Academic Free License (AFL 3.0)
+
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+
+ * It is also available through the world-wide-web at this URL:
+
+ * http://opensource.org/licenses/afl-3.0.php
+
+ * If you did not receive a copy of the license and are unable to
+
+ * obtain it through the world-wide-web, please send an email
+
+ * to license@magento.com so we can send you a copy immediately.
+
+ *
+
+ * DISCLAIMER
+
+ *
+
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+
+ * versions in the future. If you wish to customize Magento for your
+
+ * needs please refer to http://www.magento.com for more information.
+
+ *
+
+ * @category    design
+
+ * @package     base_default
+
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+
+ */
+
+?>
+
+<?php
+
+/**
+
+ * Template for Mage_Page_Block_Html
+
+ */
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+
+<head>
+
+<?php echo $this->getChildHtml('head') ?>
+</head>
+
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+
+<?php echo $this->getChildHtml('after_body_start') ?>
+
+<div class="wrapper">
+
+    <?php echo $this->getChildHtml('global_notices') ?>
+
+    <div class="page">
+
+        <?php echo $this->getChildHtml('header') ?>
+
+        <section class="main-container col1-layout">
+
+		<?php $cmsPageUrlKey = Mage::getSingleton('cms/page')->getIdentifier(); ?>
+
+		<?php
+
+			if($cmsPageUrlKey == "corporate-orders"){
+
+		?>	
+
+			<div class="concierge_banner_section">
+
+        		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('corporate_banner')->toHtml(); ?>
+
+            </div>
+
+		<?php } ?>
+
+			<div class="container">
+
+				<div class="main">
+
+					<?php if($cmsPageUrlKey != "corporate-orders"){ ?>
+
+					<?php echo $this->getChildHtml('breadcrumbs') ?>
+
+					<?php } ?>									
+
+					<div>
+
+						<?php echo $this->getChildHtml('global_messages') ?>
+
+						<?php echo $this->getChildHtml('content') ?>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<?php
+
+			if($cmsPageUrlKey == "corporate-orders"){
+
+			?>
+
+			<div class="pdt_sec">
+
+				<div class="corporate_heading"><h3>Our Brands</h3></div>
+
+				<div class="logo_gal">
+
+					<ul>
+
+					<?php
+
+						//gets all sub categories of parent category
+
+						$cats = Mage::getModel('catalog/category')->load(8)->getChildren();
+
+						$catIds = explode(',',$cats);
+
+						$categories = array();
+
+						foreach($catIds as $catId) {
+
+						    $category = Mage::getModel('catalog/category')->load($catId); 
+
+						    $categories[$category->getName()] = array(
+
+						    	'url' => $category->getUrl(),
+
+						    	'img' => $category->getImageUrl()
+
+						    );
+
+						}			
+
+						ksort($categories, SORT_STRING);
+
+						$lg=1;
+
+						$k=1;
+
+						foreach($categories as $name => $data):
+
+						?>
+
+							<li><a href="<?php echo $data['url']; ?>"><img width="155px" height="72px" src="<?php echo $data['img']; ?>" alt="" /></a></li>       
+
+						<?php endforeach; ?>
+
+						</ul>
+
+					</div>
+
+					<div class="our_watch_care_tips_section">
+
+                    	<div class="git_txt23">Our Services</div>	
+
+                        <div class="service_outer">
+
+							<?php
+
+							// $pageId = Mage::app()->getRequest()->getParam('page_id', Mage::app()->getRequest()->getParam('id', false));
+
+							$page = Mage::getModel('cms/page')->load(47);
+
+							//echo $page->getContent();
+
+							echo $content = Mage::helper('cms')->getPageTemplateProcessor()->filter($page->getContent());
+
+							?>
+
+                        </div>
+
+					</div>
+
+				</div>
+
+			<?php
+
+				}
+
+			?>
+
+        </section>
+
+        <?php echo $this->getChildHtml('footer',false) ?>
+
+        <?php echo $this->getChildHtml('global_cookie_notice') ?>
+
+        <?php echo $this->getChildHtml('before_body_end') ?>
+
+    </div>
+
+</div>
+
+<?php echo $this->getAbsoluteFooter() ?>
+
+<!-- Google Code for Remarketing Tag -->
+<!--------------------------------------------------
+Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+--------------------------------------------------->
+<?php 
+
+
+
+
+		  
+		  $page =  $this->getRequest()->getModuleName(); 
+           
+		  
+		  switch($page)
+			{
+			  case 'cms':
+				{
+				   $identifier = Mage::getSingleton('cms/page')->getIdentifier();
+
+				   $ecomm_pagetype = ($identifier == 'no-route')?'home':$identifier;
+				   if($ecomm_pagetype == 'home')
+				     {
+                         
+						  $_productCollection = Mage::getModel('catalog/category')->load(112)
+								 ->getProductCollection()
+								 ->addAttributeToSort('name', Varien_Data_Collection::SORT_ORDER_ASC);
+						  $ProductIDs = array();	
+						  $ProductPrice = array();	 
+						  $i=0;
+                          foreach ($_productCollection as $_product): 	
+						     if($i++ == 4) break;
+							 $_product = Mage::getModel('catalog/product')->setStoreId($storeId)->load($_product->getId());	 
+						     $ProductIDs[] = '"'.$_product->getSku().'"'; 
+							 $ProductPrice[] = round($_product->getFinalPrice()); 
+						  endforeach;
+						  $_productCollection = Mage::getModel('catalog/category')->load(113)
+								 ->getProductCollection()
+								 ->addAttributeToSort('name', Varien_Data_Collection::SORT_ORDER_ASC);
+						  $i=0;
+                          foreach ($_productCollection as $_product): 	
+						     if($i++ == 4) break;	
+							 $_product = Mage::getModel('catalog/product')->setStoreId($storeId)->load($_product->getId());	  
+						     $ProductIDs[] = '"'.$_product->getSku().'"';
+							 $ProductPrice[] = round($_product->getFinalPrice()); 
+						  endforeach;
+						  $ecomm_prodid = "[".implode(', ',$ProductIDs)."]";
+						  $ecomm_totalvalue =  "[".implode(', ',$ProductPrice)."]"; 
+						 // print_r($ecomm_totalvalue); exit;
+
+					   
+					 }
+				   break;
+				}
+			   case 'catalog':
+				{
+				    $post = Mage::app()->getRequest()->getParams();
+
+					if(Mage::registry('current_product')) 
+						{
+				  			  $product_id = Mage::registry('current_product')->getId();
+							  $_product = Mage::getModel('catalog/product')->load($product_id);
+                              $discountprice = $_product->getPrice()-$_product->getFinalPrice();
+    		                  $discount = ($discountprice*100)/$_product->getPrice();							  
+							  $ecomm_pagetype = 'product';
+							  $ecomm_prodid = '"'.$_product->getModel_number().'"';
+							  $ecomm_totalvalue = ($discount>0)?$_product->getFinalPrice():$_product->getPrice();
+							  $ecomm_totalvalue = round($ecomm_totalvalue);
+
+						}
+				  
+                  break;
+				}
+			   case 'checkout':
+				{
+					$ecomm_pagetype = 'cart';
+					$quote = Mage::getSingleton('checkout/session')->getQuote();
+					$cartItems = $quote->getAllVisibleItems();
+				    $ProductIDs = array();	
+					$ProductPrice = array();	 
+
+					foreach ($cartItems as $item) {
+						$productId = $item->getProductId();
+						$_product = Mage::getModel('catalog/product')->load($productId);
+						$ProductIDs[] = '"'.$_product->getSku().'"';
+						$ProductPrice[] = round($_product->getFinalPrice()); 
+						// Do something more
+					}
+					if(count($ProductIDs) > 1)
+					  {
+ 					     $ecomm_prodid =  "[".implode(', ',$ProductIDs)."]";
+					     $ecomm_totalvalue =  "[".implode(', ',$ProductPrice)."]"; 
+					   }
+					else
+					  { 
+ 					     $ecomm_prodid = $ProductIDs[0];
+						 $ecomm_totalvalue = $ProductPrice[0];
+					  }	 
+					     					
+					   
+					   
+				    break; 	
+				} 	
+			   default:
+				{   
+			 
+					$ecomm_pagetype = $page;
+					break;
+				} 		
+			}  
+	
+?>
+
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_prodid: <?php echo ($ecomm_prodid)?$ecomm_prodid:''; ?>,
+ecomm_pagetype: "<?php echo ($ecomm_pagetype)? $ecomm_pagetype:''; ?>",
+ecomm_totalvalue: <?php echo ($ecomm_totalvalue)?$ecomm_totalvalue:''; ?>,
+dynx_itemid: <?php echo ($ecomm_prodid)?$ecomm_prodid:''; ?>,
+dynx_itemid2: ,
+dynx_pagetype: "<?php echo ($ecomm_pagetype)? $ecomm_pagetype:''; ?>",
+dynx_totalvalue: <?php echo ($ecomm_totalvalue)?$ecomm_totalvalue:''; ?>,
+ecomm_category: "<?php echo ($currentCategoryName)?$currentCategoryName:''; ?>",
+};
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 958835991;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/958835991/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+</body>
+</html>

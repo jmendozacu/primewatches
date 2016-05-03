@@ -1,0 +1,177 @@
+<?php
+
+/**
+
+ * Magento
+
+ *
+
+ * NOTICE OF LICENSE
+
+ *
+
+ * This source file is subject to the Academic Free License (AFL 3.0)
+
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+
+ * It is also available through the world-wide-web at this URL:
+
+ * http://opensource.org/licenses/afl-3.0.php
+
+ * If you did not receive a copy of the license and are unable to
+
+ * obtain it through the world-wide-web, please send an email
+
+ * to license@magento.com so we can send you a copy immediately.
+
+ *
+
+ * DISCLAIMER
+
+ *
+
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+
+ * versions in the future. If you wish to customize Magento for your
+
+ * needs please refer to http://www.magento.com for more information.
+
+ *
+
+ * @category    design
+
+ * @package     base_default
+
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+
+ */
+
+?>
+
+<?php
+
+/**
+
+ * Customer login form template
+
+ *
+
+ * @see Mage_Customer_Block_Form_Login
+
+ */
+
+?>
+
+
+
+<div class="account-login">
+
+
+
+    <?php //echo $this->getMessagesBlock()->toHtml() ?>
+
+    <?php /* Extensions placeholder */ ?>
+
+    <?php //echo $this->getChildHtml('customer.form.login.extra')?>
+
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+
+        <?php echo $this->getBlockHtml('formkey'); ?>
+
+        <div class="col2-set">
+
+
+
+            <div class="col-2 registered-users">
+
+                <div class="content">
+
+                    <h2><?php echo $this->__('Log In') ?></h2>
+                    <ul class="form-list">
+
+                        <li>
+
+                           
+
+                            <div class="input-box">
+                                 <label for="email" class="required"><em>*</em><?php echo $this->__('Email') ?></label>
+                                <input type="text" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+
+                            </div>
+
+                        </li>
+
+                        <li>
+
+                            
+
+                            <div class="input-box">
+                                <label for="pass" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                                <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+
+                            </div>
+
+                        </li>
+
+						<li>
+                        <div class="forgot"><a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a></div>
+                        <button type="submit" class="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Login')) ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
+
+						</li>
+
+                    </ul>
+
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+
+		
+    </form>
+	<div class="socialloginmobile">
+	<p> ---- Or Login ----  </p>
+		<?php
+			$services = Mage::helper('gomage_social')->getServices();
+		?>
+		<?php if (count($services)) : ?>
+			<?php if ($this->getUsedList()): ?><li class="last gs-list"><?php endif; ?>
+			<ul class="gs-login <?php if(Mage::getConfig()->getModuleConfig('Enterprise_Enterprise' )): ?>gs-login-ee<?php endif; ?> gs-login-<?php echo 'fast_links' ?>">
+				<?php
+					end($services);
+					$last_type = key($services);
+					
+					foreach ($services as $type => $value) {
+					     $service = GoMage_Social_Model_Type::getTypeService($type);
+						 $block = $this->getLayout()->createBlock('gomage_social/login_' . $service);
+						 $block->setData('is_last', $is_last)->setData('service', $service)->setPlace('fast_links');	
+					     echo $block->toHtml(); 
+					}
+				?>
+			</ul>
+         <?php if ($this->getUsedList()): ?></li><?php endif; ?>
+		<?php endif; ?>
+
+	</div>
+
+    <script type="text/javascript">
+
+    //<![CDATA[
+
+        var dataForm = new VarienForm('login-form', true);
+
+    //]]>
+
+    </script>
+
+</div>
+
+
+
+
+
+ 		

@@ -1,0 +1,213 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php 
+   $page =  $this->getRequest()->getModuleName(); 
+    $identifier = Mage::getSingleton('cms/page')->getIdentifier();  
+	if($identifier == 'thank-you')
+	 {
+?>
+<!-- Google Code for form fill up Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 958835991;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "fbcHCIHholoQl9qayQM";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript"  
+src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt=""  
+src="//www.googleadservices.com/pagead/conversion/958835991/?label=fbcHCIHholoQl9qayQM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<?php } ?>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+    <?php //echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+        <section class="main-container col2-left-layout">		
+			
+             <?php 
+			 $DontShowCatcontainer = 1;
+					if (Mage::registry('current_category')) 
+					{
+					   $currentCategoryName =  strtolower(Mage::registry('current_category')->getName());
+					   echo $this->getLayout()->createBlock('cms/block')->setBlockId('top-category-banner-'.$currentCategoryName)->toHtml();
+					   if(Mage::getModel('cms/block')->load('top-category-banner-'.$currentCategoryName)->getIsActive())
+					     $DontShowCatcontainer = 0;
+                    }  
+              ?>
+		   
+			<div class="container ">
+				<div class="main">
+				
+				<?php echo ($DontShowCatcontainer == 0)?'<div class="catagory-container">':'';?>
+				<?php echo $this->getChildHtml('breadcrumbs') ?> 
+				<?php echo ($DontShowCatcontainer == 0)?'</div>':'';?>
+					<div class="main-left">
+						 <?php 
+								if (Mage::registry('current_category')) 
+								{
+								   $currentCategoryName =  strtolower(Mage::registry('current_category')->getName());
+								   echo $this->getLayout()->createBlock('cms/block')->setBlockId('left-category-banner-top-'.$currentCategoryName)->toHtml();
+								} 
+								if($page == 'catalogsearch')
+								 {
+								    echo $this->getLayout()->createBlock('cms/block')->setBlockId('left-search-banner-top')->toHtml();
+								 } 
+						  ?>						
+						  <?php 
+						  $leftNavigation =  $this->getChildHtml('left');
+						  if(Mage::helper('mobiledetect')->isMobileDevice())
+						    Mage::getSingleton('core/session')->setLeftnav($leftNavigation); 
+						  else
+						    echo $leftNavigation;  	
+						  ?>
+						 <?php 
+								if (Mage::registry('current_category')) 
+								{
+								   $currentCategoryName =  strtolower(Mage::registry('current_category')->getName());
+								   echo $this->getLayout()->createBlock('cms/block')->setBlockId('left-category-banner-bottom-'.$currentCategoryName)->toHtml();
+								}  
+						  ?>
+						
+					</div>
+					<div class="main-right">
+						<?php echo $this->getChildHtml('global_messages') ?>
+						<?php echo $this->getChildHtml('content') ?>
+						 						
+					
+					</div>
+				</div>
+				<?php 
+								if (Mage::registry('current_category')) 
+								{
+								   $currentCategoryName =  strtolower(Mage::registry('current_category')->getName());
+								   echo $this->getLayout()->createBlock('cms/block')->setBlockId('category-banner-bottom-'.$currentCategoryName)->toHtml();
+								}  
+						  ?>
+			</div>
+        </section>
+        <?php echo $this->getChildHtml('footer',false) ?>
+        <?php echo $this->getChildHtml('global_cookie_notice') ?>
+        <?php echo $this->getChildHtml('before_body_end') ?>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+<!-- Google Code for Remarketing Tag -->
+<!--------------------------------------------------
+Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+--------------------------------------------------->
+<?php 
+		 
+		  switch($page)
+			{
+			  case 'cms':
+				{
+				   $identifier = Mage::getSingleton('cms/page')->getIdentifier();
+				   $ecomm_pagetype = ($identifier == 'no-route')?'home':$identifier;
+				   break;
+				}
+			   case 'catalog':
+				{
+				    $post = Mage::app()->getRequest()->getParams();
+					if (Mage::registry('current_category')) 
+					{
+					  $currentCategoryName =  Mage::registry('current_category')->getName();
+					  $ecomm_pagetype = 'category';
+					  $ecomm_prodid =  Mage::getSingleton('core/session')->getEproducts();
+					  $ecomm_totalvalue = Mage::getSingleton('core/session')->getEvalue();
+					}
+                  break;
+				}
+			   case 'catalogsearch':
+			     {
+					  $ecomm_pagetype = 'searchresults';
+					  $ecomm_prodid =  Mage::getSingleton('core/session')->getEproducts();
+					  $ecomm_totalvalue = Mage::getSingleton('core/session')->getEvalue();
+				   break;
+				 }	
+			   case 'checkout':
+				{
+					$ecomm_pagetype = 'cart';
+				     break; 	
+				} 	
+			   default:
+				{   
+			 
+					$ecomm_pagetype = $page;
+					break;
+				} 		
+			}  
+	$ecomm_prodid = ltrim($ecomm_prodid);
+?>
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_prodid: <?php echo ($ecomm_prodid)?$ecomm_prodid:''; ?>,
+ecomm_pagetype: "<?php echo ($ecomm_pagetype)? $ecomm_pagetype:''; ?>",
+ecomm_totalvalue: <?php echo ($ecomm_totalvalue)?$ecomm_totalvalue:''; ?>,
+dynx_itemid: <?php echo ($ecomm_prodid)?$ecomm_prodid:''; ?>,
+dynx_itemid2: ,
+dynx_pagetype: "<?php echo ($ecomm_pagetype)? $ecomm_pagetype:''; ?>",
+dynx_totalvalue: <?php echo ($ecomm_totalvalue)?$ecomm_totalvalue:''; ?>,
+ecomm_category: "<?php echo ($currentCategoryName)?$currentCategoryName:''; ?>",
+};
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 958835991;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/958835991/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<?php
+
+/**
+
+ * Magento
+
+ *
+
+ * NOTICE OF LICENSE
+
+ *
+
+ * This source file is subject to the Academic Free License (AFL 3.0)
+
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+
+ * It is also available through the world-wide-web at this URL:
+
+ * http://opensource.org/licenses/afl-3.0.php
+
+ * If you did not receive a copy of the license and are unable to
+
+ * obtain it through the world-wide-web, please send an email
+
+ * to license@magento.com so we can send you a copy immediately.
+
+ *
+
+ * DISCLAIMER
+
+ *
+
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+
+ * versions in the future. If you wish to customize Magento for your
+
+ * needs please refer to http://www.magento.com for more information.
+
+ *
+
+ * @category    design
+
+ * @package     base_default
+
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+
+ */
+
+?>
+
+<?php if($_heading = $this->getContentHeading()): ?>
+
+    <div class="page-title">
+
+        <h1><?php echo $_heading; ?></h1>
+
+    </div>
+
+<?php endif; ?>
+
+
+
+<nav class="cbp-body-menu">
+
+ <?php $_helper = Mage::helper('catalog/category') ?>
+
+ <a href="javascript:void(0)" class="main-brands-whatsnew">What's New <span class="plus">plus</span><span class="minus">minus</span></a>
+
+		    <div class="msubmenu sub-brands-whatsnew"> 
+
+				<a href="<?php echo $this->getUrl() ?>brands.html/?date=<?php echo date('Y-m-d', strtotime('-30 days')).'-'.date('Y-m-d'); ?>">Last 30 Days</a>
+
+          		<a href="<?php echo $this->getUrl() ?>brands.html/?date=<?php echo date('Y-m-d', strtotime('-60 days')).'-'.date('Y-m-d'); ?>">Last 60 Days</a>
+
+				<a href="<?php echo $this->getUrl() ?>brands.html/?date=<?php echo date('Y-m-d'); ?>">Back In Stock</a></div>
+
+   <a href="javascript:void(0)" class="main-brands">Brands <span class="plus">plus</span><span class="minus">minus</span></a>
+
+     
+
+		    <div class="msubmenu sub-brands">
+
+			 <h2>Luxury & Premium Brands <span><a href="<?php echo $this->getUrl() ?>brands.html">View All</a></span></h2> 
+
+			  <?php
+
+				 $children = Mage::getModel('catalog/category')->getCategories(32);
+
+				 foreach ($children as $category) {
+
+			 ?>
+
+			 <a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a>
+
+			 <?php } ?>  
+
+			</div> 
+
+
+
+   <a href="javascript:void(0)" class="main-boutique">Online Boutique <span class="plus">plus</span><span class="minus">minus</span></a>
+
+           
+
+		    <div class="msubmenu sub-boutique">
+
+			 <h2>Popular Brands <span><a href="<?php echo $this->getUrl() ?>brands.html">View All</a></span></h2>
+
+			  <?php
+
+				 $children = Mage::getModel('catalog/category')->getCategories(31);
+
+				 foreach ($children as $category) {
+
+			 ?>
+
+			 <a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a>
+
+			 <?php } ?>  
+
+			</div> 
+
+
+
+	<a href="javascript:void(0)" class="main-watch-finder">Watch Finder <span class="plus">plus</span><span class="minus">minus</span></a>	
+
+			   	<div class="msubmenu sub-watch-finder">Gender<span class="plus">plus</span><span class="minus">minus</span></div>
+
+				<div class="msubmenu sub-msubmenu sub-watch-finder-gender">
+
+					<?php
+
+						$children = Mage::getModel('catalog/category')->getCategories(20);
+
+						foreach ($children as $category) { ?>
+
+					 	 <a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?>				                        </a>
+
+					<?php } ?>
+
+				</div>
+
+				
+
+				
+
+				<div class="msubmenu sub-watch-price">Price<span class="plus">plus</span><span class="minus">minus</span></div>
+
+				 <div class="msubmenu sub-msubmenu sub-watch-finder-price">
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html/?price=100-10000">Below Rs 10,000</a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html/?price=10000-50000">Rs 10k to Rs 50k </a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html/?price=50000-100000">Rs 50k to Rs 1Lac</a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html/?price=100000-200000">Rs 1Lac to Rs 2Lac </a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html/?price=200000-300000">Rs 2Lac to Rs 3Lac</a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html/?price=300000-500000">Rs 3Lac to Rs 5Lac </a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html/?price=500000-1000000">Rs 5Lac to Rs 10Lac</a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html/?price=1000000-">Above Rs 10Lac </a>	
+
+				 </div> 
+
+				
+
+				<div class="msubmenu sub-watch-feature">Feature<span class="plus">plus</span><span class="minus">minus</span></div>
+
+				<div class="msubmenu sub-msubmenu sub-watch-finder-feature">
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=68">Alarm Clock Watches</a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=67">Altimeter Watches </a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=66">Automatic Watches</a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=65">Barometer Watches </a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=64">Chronograph Watches</a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=63">Compass Watches </a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=62">Date Display Watches</a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=61">Day Date Watches</a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=60">GMT Watches </a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=59">Gold Watches</a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=58">Gold Plated Watches </a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=57">GPS Enabled Watches </a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=56">HRM Watches</a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=55">Mechanical Watches </a>
+
+				  <a href="<?php echo $this->getUrl() ?>brands.html?feature=54">Month Display Watches</a>
+
+				 </div> 
+
+			   </ul>
+
+
+
+		 <a href="javascript:void(0)" class="main-watches-accessories"> Accessories<span class="plus">plus</span><span class="minus">minus</span></a>
+
+		 <div class="msubmenu sub-watches-accessories">
+     <h2> Showpiece <span><a href="<?php echo $this->getUrl() ?>brands.html">View All</a></span></h2>
+         
+
+          <?php
+
+			$children = Mage::getModel('catalog/category')->getCategories(46);
+
+			foreach ($children as $category) {
+
+			?>
+
+          <a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a>
+
+          <?php } ?>
+     <h2>Writing Instruments <span><a href="<?php echo $this->getUrl() ?>brands.html">View All</a></span></h2>
+	      
+
+          <?php
+
+			$children = Mage::getModel('catalog/category')->getCategories(47);
+
+			foreach ($children as $category) {  
+
+			?>
+
+          <a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a>
+
+          <?php } ?>
+
+		
+     <h2>Eyewear<span><a href="<?php echo $this->getUrl() ?>brands.html">View All</a></span></h2>
+	
+
+	      
+
+          <?php
+
+			$children = Mage::getModel('catalog/category')->getCategories(48);
+
+			foreach ($children as $category) {
+
+			?>
+
+          <a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a>
+
+          <?php } ?>
+
+		 </div>  
+
+	<a href="javascript:void(0)" class="main-watches-service"> Repair & Service<span class="plus">plus</span><span class="minus">minus</span></a>
+
+	      <div class="msubmenu sub-watches-service">
+
+          <a href="<?php echo $this->getUrl() ?>overview">Overview</a>
+
+          <a href="<?php echo $this->getUrl() ?>about-us">About Us</a>
+
+          <a href="<?php echo $this->getUrl() ?>our-services">Our Services</a>
+
+          <a href="<?php echo $this->getUrl() ?>five-point-check-up">5- point check up</a>
+
+		  <a href="<?php echo $this->getUrl() ?>watch-care-tips">Watch Care Tips</a>
+
+		  <a href="<?php echo $this->getUrl() ?>index.php/service-concierge">Service concierge</a>
+
+          <a href="<?php echo $this->getUrl() ?>water-resistance">Water Resistance</a>
+
+          <a href="<?php echo $this->getUrl() ?>common-technical-question">Common Technical Q&amp;A</a>
+
+		 </div>	
+
+	<?php $special = Mage::getModel('catalog/category')->load(44); ?>
+	<a href="http://www.theprimewatches.com/blog/" > The Watch Guide</a>
+	<a href="<?php echo $special->getUrl(); ?>">Sale</a>
+
+  </nav>

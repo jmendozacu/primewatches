@@ -1,0 +1,1 @@
+[05-Mar-2016 00:02:47 America/Chicago] PHP Fatal error:  Class 'Mage_Adminhtml_Block_Template' not found in /home/theprimewatches/public_html/app/code/community/Belvg/Jquery/Block/Head.php on line 20

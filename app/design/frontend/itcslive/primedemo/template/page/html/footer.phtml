@@ -1,0 +1,489 @@
+<?php
+
+/**
+
+ * Magento
+
+ *
+
+ * NOTICE OF LICENSE
+
+ *
+
+ * This source file is subject to the Academic Free License (AFL 3.0)
+
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+
+ * It is also available through the world-wide-web at this URL:
+
+ * http://opensource.org/licenses/afl-3.0.php
+
+ * If you did not receive a copy of the license and are unable to
+
+ * obtain it through the world-wide-web, please send an email
+
+ * to license@magentocommerce.com so we can send you a copy immediately.
+
+ *
+
+ * DISCLAIMER
+
+ *
+
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+
+ * versions in the future. If you wish to customize Magento for your
+
+ * needs please refer to http://www.magentocommerce.com for more information.
+
+ *
+
+ * @category    design
+
+ * @package     default_modern
+
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+
+ */
+
+?>
+
+<?php
+
+/**
+
+ * Magento
+
+ *
+
+ * NOTICE OF LICENSE
+
+ *
+
+ * This source file is subject to the Academic Free License (AFL 3.0)
+
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+
+ * It is also available through the world-wide-web at this URL:
+
+ * http://opensource.org/licenses/afl-3.0.php
+
+ * If you did not receive a copy of the license and are unable to
+
+ * obtain it through the world-wide-web, please send an email
+
+ * to license@magentocommerce.com so we can send you a copy immediately.
+
+ *
+
+ * DISCLAIMER
+
+ *
+
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+
+ * versions in the future. If you wish to customize Magento for your
+
+ * needs please refer to http://www.magentocommerce.com for more information.
+
+ *
+
+ * @category    design
+
+ * @package     default_modern
+
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+
+ */
+
+?>
+
+<footer class="footer-container">
+
+		<div class="mobile_footer desktop-none">
+
+			<div class="mobile_contact desktop-none">
+
+			<div class="container">
+
+				<div class="phone"><a href="tel:+919830315007"><i class="fa fa-phone"></i>Call us</a></div>
+
+				<div class="email"><a href="mailto:fb@primewatchworld.com"><i class="fa fa-envelope"></i>Email us</a></div>
+
+				</div>
+
+			</div>
+
+			<div class="news_letr mobile_news_letr desktop-none">
+
+			<div class="container">
+
+			<p>
+
+			We thoughtfully master our newsletters with offers, new launches and tips for watch lovers
+
+			</p>
+
+							<?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml(); ?>
+
+						</div>
+
+						</div>
+
+			<div class="mobile-bottom">
+
+			<ul class="mobile-bottom-lincks">
+
+				<li><a href="<?php echo $this->getUrl(''); ?>locatestore">Locate our Boutiques</a></li>
+
+				<li><a href="<?php echo $this->getUrl(''); ?>howto-buy">Make a payment</a></li>
+
+				<li><a href="<?php echo $this->getUrl(''); ?>about-us">About Us</a></li>
+
+				<li><a href="<?php echo $this->getUrl(''); ?>five-point-check-up">Protect</a></li>				
+
+			</ul>
+
+			<div class="mobile-social-block">
+
+						<h4>Follow Us</h4>
+
+						<ul class="mobile-social">
+
+							<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('social_icon')->toHtml(); ?> 
+						</ul>
+
+					</div>
+
+			
+
+			</div>		
+
+		</div>
+
+		
+
+		
+
+		
+
+			<div class="footer_top mobile-none">
+
+				<div class="container">
+
+					<div class="footer_box">
+
+						<div class="footer_logo">
+
+							<a href="<?php echo $this->getUrl(''); ?>"><img src="<?php echo $this->getSkinUrl('images/logo.png');?>" alt="" /></a>
+
+						</div>
+
+						<p> <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('Footercontent_left')->toHtml(); ?></p>
+
+                        <div class="news_letr">
+
+							<?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml(); ?>
+
+						</div>
+
+						
+
+                        
+
+                        
+
+                       <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('social_icon')->toHtml(); ?> 
+
+	
+
+					</div>
+
+					
+
+					<div class="footer_box2 gren_brdr">
+
+						<h4>Shopping Guide</h4>
+
+						<ul>
+
+							<li><a href="<?php echo $this->getUrl(''); ?>howto-buy">How to buy</a></li>
+
+							<li><a href="<?php echo $this->getUrl(''); ?>faqs">FAQs</a></li>
+
+							<li><a href="<?php echo $this->getUrl(''); ?>terms">Terms and Conditions</a></li>
+
+							<li><a href="<?php echo $this->getUrl(''); ?>repair-policy">Repair Policy</a></li>
+
+							<li><a href="<?php echo $this->getUrl(''); ?>customer-service">Customer Service</a></li>
+
+							<!-- <li><a href="<?php echo $this->getUrl(''); ?>return-policy">Return policy</a></li> -->
+
+						</ul>
+
+					</div>
+
+					
+
+					<div class="footer_box2 yelow_brdr">
+
+						<h4>Style Advisor</h4>
+
+						<ul>
+
+							<li><a href="<?php echo $this->getUrl('') ?>customer/account">Your Account</a></li>
+
+							<li><a href="<?php echo $this->getUrl(''); ?>help">Help</a></li>
+
+							<li><a href="<?php echo $this->getUrl(''); ?>about-us">About Us</a></li>
+
+							<li><a href="<?php echo $this->getUrl(''); ?>history">History</a></li>
+
+							<li><a href="<?php echo $this->getUrl(''); ?>privacy-policy">Privacy Policy</a></li>
+
+						</ul>
+
+						
+
+					</div>
+
+					
+
+					<div class="footer_box2 orng_brdr">
+
+						<h4>Information</h4>
+
+						<ul>
+
+							<li><a href="<?php echo $this->getUrl(''); ?>catalog/seo_sitemap/category">Site Map</a></li>
+
+							<!-- <li><a href="#">Search Terms</a></li>
+
+							<li><a href="#">Advanced Search</a></li> -->
+
+							<li><a href="<?php echo $this->getUrl(''); ?>contacts">Contact Us</a></li>
+
+							<li><a href="<?php echo $this->getUrl(''); ?>career">Career</a></li> 
+
+							<li><a href="<?php echo $this->getUrl(''); ?>sales/order/history">Orders History</a></li>
+
+							<li><a href="<?php echo $this->getUrl(''); ?>events">Events</a></li>
+
+						</ul>
+
+					</div>
+
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_contact')->toHtml(); ?>
+
+					<?php /*?><div class="footer_box3 sky_blue">
+
+						<h4>Contact Us</h4>
+
+						<ul>
+
+							<li><a href="#"><img src="<?php echo $this->getSkinUrl('images/location_icon1.png');?>" alt="" /> 153, Radha Bazaar, Kolkata-700001</a></li>
+
+							<li><a href="#"><img src="<?php echo $this->getSkinUrl('images/location_icon2.png');?>" alt="" /> (033) 22624375</a></li>
+
+							<li><a href="#"><img src="<?php echo $this->getSkinUrl('images/location_icon3.png');?>" alt="" /> info@theprimewatchworld.com</a></li>
+
+						</ul>
+
+					</div><?php */?>
+
+					
+
+					<div class="pay_sec">
+
+						<ul>
+
+							<li><span>We Accept Payments Through :-</span></li>
+
+							<!--<li><a><img src="<?php echo $this->getSkinUrl('images/pay_icon1.png');?>" alt="" /></a></li>
+
+							<li><a><img src="<?php echo $this->getSkinUrl('images/pay_icon2.png');?>" alt="" /></a></li>-->
+
+							<li><a><img src="<?php echo $this->getSkinUrl('images/pay_icon3.png');?>" alt="" /></a></li>
+
+							<li><a><img src="<?php echo $this->getSkinUrl('images/pay_icon4.png');?>" alt="" /></a></li>
+
+							<li><a><img src="<?php echo $this->getSkinUrl('images/pay_icon5.png');?>" alt="" /></a></li>
+
+							<li><a><img src="<?php echo $this->getSkinUrl('images/pay_icon6.png');?>" alt="" /></a></li>
+
+							<li><a><img src="<?php echo $this->getSkinUrl('images/pay_icon7.png');?>" alt="" /></a></li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+
+<?php echo base64_decode('CQkJPGRpdiBjbGFzcz0iY29weV9ydF9zZWMiPg0KCQkJCTxkaXYgY2xhc3M9ImNvbnRhaW5lciI+
+
+DQoJCQkJCTxkaXYgY2xhc3M9ImNvcHlfcnRfaW5uciI+DQoJCQkJCQk8cD4mY29weTsgMjAxNS4g
+
+QWxsIFJpZ2h0cyBSZXNlcnZlZC4gV2ViIERlc2lnbiAmIERldmVsb3BlZCBCeSA8YSBocmVmPSJo
+
+dHRwOi8vd3d3Lml0Y3NsaXZlLmluIj5pVENTTGl2ZS5pbjwvYT48L3A+DQoJCQkJCTwvZGl2Pg0K
+
+CQkJCTwvZGl2Pg0KCQkJPC9kaXY+DQoJCTwvZm9vdGVyPg0KCQkNCgkJPCEtLS0tLS0tLS0tLS0g
+
+Rk9PVEVSLUVORCAtLS0tLS0tLS0tPg0KCTwvZGl2Pg0KPC9kaXY+DQo=');?>		
+
+<div id="enqnew" style="display: none;"> 
+
+      <div class="selling_frm">
+
+      	<div class="light_img">
+
+	  	<img src="" id="prod_img" width="250">
+
+	  </div>
+
+	  <div class="rhtpop">
+
+      	<p class="light_pname" id="light_pname"></p>
+
+      	<span class="light_sdesc">Please enter the following details to check our selling price of this product</span>
+
+      	<form action="<?php echo $this->getUrl(''); ?>enquiry.php" method="post" name="enquiry_form" onSubmit="return checkValidation();"> 
+
+      		<div class="crs" onclick="document.getElementById('enqnew').style.display='none';">x</div>
+
+      	<div class="selling_frm_inner">
+      		<input type="text" name="cust_name" id="cust_name" placeholder="Name" />
+			<span><i class="fa fa-user"></i></span>
+
+      	</div>
+
+      	<div class="selling_frm_inner">
+      		<input type="text" name="email" id="email" placeholder="Email" />
+			<span><i class="fa fa-envelope"></i></span>
+
+      	</div>
+
+      	<div class="selling_frm_inner">
+              <input type="text" name="ext" id="ext" required placeholder="+91" maxlength="3" value="+91"/> 
+			  <input type="text" name="phone" id="phone" required placeholder="Phone" maxlength="10"/>
+			<span><i class="fa fa-tty"></i></span>
+
+      	</div>
+
+      	<div class="selling_frm_inner">
+      		<input type="text" name="city" id="city" placeholder="City" />
+      	</div>
+      	<div class="selling_frm_inner">
+      		<input type="hidden" name="pname" id="pname" value="" /> 
+      	</div>
+      	<div class="selling_frm_inner">
+
+      		<input type="submit" name="sub_enq" value="Send" />
+
+      	</div>
+
+      	 </form> 
+
+      </div>
+
+    </div>     
+
+</div>
+
+<!--Start of Zopim Live Chat Script-->
+
+<script type="text/javascript">
+
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+
+$.src="//v2.zopim.com/?3KlWoSFy4OYx1xFDTdyzviGI7RoL89sb";z.t=+new Date;$.
+
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+
+</script>
+
+<!--End of Zopim Live Chat Script-->
+
+
+
+
+
+
+
+<script>
+
+function checkValidation()
+
+{
+
+	var cust_name = document.getElementById('cust_name').value;
+
+	var email= document.enquiry_form.email.value;
+
+	var phone = document.getElementById('phone').value;
+
+	var city = document.getElementById('city').value;
+
+	
+
+	var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i ;
+
+	
+
+	if(cust_name=="" || email =="" || phone=="" || city=="")
+
+	{
+
+		alert("All the fields are mandatory!");
+
+		return false;
+
+	}
+
+	else if(phone.length!=10)
+
+	{
+
+		alert("Phone number should be 10!");		
+
+		return false;
+
+	}
+
+	else if(email!="")
+
+	{
+
+		if (filter.test(email))
+
+		testresults=true;
+
+		else{
+
+		alert("Please input a valid email address!");
+
+		testresults=false;
+
+		}
+
+		return (testresults);
+
+	}
+
+	
+
+}
+
+
+
+</script>

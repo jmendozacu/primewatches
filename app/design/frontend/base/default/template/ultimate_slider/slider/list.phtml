@@ -1,0 +1,122 @@
+<?php
+/**
+* Ultimate_Slider extension
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the MIT License
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/mit-license.php
+*/
+/**
+*
+* @category       Images & Media
+* @package        Ultimate_Slider
+* @copyright      Copyright (c) 2015
+* @license        http://opensource.org/licenses/mit-license.php MIT License
+*/
+/**
+* Slider list template
+*
+* @category    Images & Media
+* @package     Ultimate_Slider
+* @author      Rajasingh and Manikandan D
+* @modified    2015-11-21 04:54:53 PM IST
+*/
+?>
+
+<div class="block block-related">
+<div class="block-content">
+<div class="slide-show-right" style="width:78%; float:left;">
+	
+   <?php if(($slider['video_ogv']) && (!empty($slider['video_ogv']))){ ?>	
+				<video id="vidplayer" width="100%" height="auto" autoplay="autoplay" loop="loop" controls="controls">
+				<source src="https://s3.amazonaws.com/data.flash-banner-converter.com/vid/R1452594437000824_42132_maple/banner.mp4?AWSAccessKeyId=AKIAI7FU5HZYWNDABXHQ&amp;Expires=1452767288&amp;Signature=DdXvalnN6Ieg4BSdS8emIaVViJg%3D&amp;response-content-type=video%2Fmp4" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
+				<source src="https://s3.amazonaws.com/data.flash-banner-converter.com/vid/R1452594437000824_42132_maple/banner.webm?AWSAccessKeyId=AKIAI7FU5HZYWNDABXHQ&amp;Expires=1452767288&amp;Signature=IJI%2Bl6dPeZ9%2BQIHWx0vfCst6Sm0%3D&amp;response-content-type=video%2Fwebm" type="video/webm; codecs=&quot;vp8, vorbis&quot;">
+				<source src="https://s3.amazonaws.com/data.flash-banner-converter.com/vid/R1452594437000824_42132_maple/banner.ogv?AWSAccessKeyId=AKIAI7FU5HZYWNDABXHQ&amp;Expires=1452767288&amp;Signature=IuFUavJRdVmaRWYC2xkwiX8ZWu4%3D&amp;response-content-type=video%2Fogg" type="video/ogg; codecs=&quot;theora, vorbis&quot;">
+				</video>         
+	<?php } else { ?>
+	<div class="slideshow-container"><!-- slider start -->
+		<ul class="slideshow">		
+			<?php foreach($this->retrieveData() as $slider){ ?>			
+			<?php if(!empty($slider['image'])) { ?>        
+			<li>
+			
+			
+	
+			<?php if (substr($slider['image'], -4) == '.jpg') { ?>
+	
+				<a href="#">
+				<img src="<?php echo Mage::getBaseUrl('media');?>wysiwyg/<?php echo $slider['image'];?>"
+				alt="<?php echo $slider['alt_text'];?>"
+				title="<?php //echo $slider['title'];?>"
+				height="720"
+				/>
+				</a>
+			<?php } else { ?>
+				<video width="640" height="480" controls="controls" autoplay="false">
+					<source src="<?php echo Mage::getBaseUrl('media');?>wysiwyg/<?php echo $slider['image'];?>"
+							alt="<?php echo $slider['alt_text'];?>"
+							title="<?php //echo $slider['title'];?>"
+					>
+					Your browser does not support the video tag. But you could include an iframe/embeded video here.
+				</video> 
+			<?php } }?>
+			</li>
+			<?php } ?>
+		
+		</ul>
+			<div class="slideshow-pager">&nbsp;</div>
+			<span class="slideshow-prev">&nbsp;</span> 
+			<span class="slideshow-next">&nbsp;</span>
+		</div><!-- slider end -->	
+		<?php } ?>	
+	
+</div>
+<div class="col-left sidebar">
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_right1')->toHtml(); ?>
+</div>
+</div>
+</div>
+
+<div class="clear"></div>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_button')->toHtml(); ?>
+<div style="float:left;">
+<div class="container">
+	<ul id="responsive">
+	<?php 
+		$parentCategoryId = 8;
+		$cat = Mage::getModel('catalog/category')->load($parentCategoryId);
+		$subcats = $cat->getChildren();			
+		foreach(explode(',',$subcats) as $subCatid){
+			$_category = Mage::getModel('catalog/category')->load($subCatid);
+			if($_category->getIsActive() && $_category->getThumbnail()) {				
+				echo '<li><a href="'.$_category->getURL().'" title="'.$_category->getName().'"><img src="'.$this->getUrl('media/catalog/category').$_category->getThumbnail().'" /></a></li>';
+			}
+		}		
+		?>
+	</ul>
+</div>
+</div>
+<?php if(Mage::getStoreConfig('ultimate_slider/slider/roll_slides_active')==0) { ?>
+<script type="text/javascript">
+    $j(document).ready(function () {
+    // ==============================================
+    // UI Pattern - Slideshow
+    // ==============================================
+    $j('.slideshow-container .slideshow')
+        .cycle({
+            slides: '> li',
+            pager: '.slideshow-pager',
+            pagerTemplate: '<span class="pager-box"></span>',
+            speed: 6000,
+            pauseOnHover: true,
+            swipe: true,
+            prev: '.slideshow-prev',
+            next: '.slideshow-next',
+            fx: 'scrollHorz'
+        }).cycle('pause');
+});
+</script>
+<?php } ?>

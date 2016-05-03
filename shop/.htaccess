@@ -1,0 +1,6 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine on
+RewriteBase /
+
+RewriteRule ^(.*)$ https://www.theprimewatches.com/$1 [R=301,NC,L]
+

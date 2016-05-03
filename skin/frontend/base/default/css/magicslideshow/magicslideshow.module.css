@@ -1,0 +1,28 @@
+
+/* Contaner with main image and selectors container */
+div.MagicToolboxContainer {
+    text-align: center;
+}
+div.MagicToolboxContainer.minWidth {
+    min-width: 250px;
+}
+
+/* Contaner with message under Magic Slideshow */
+div.MagicToolboxMessage {
+    text-align: center;
+}
+/* NOTE: magicscroll makes the image smaller if there is a margin */
+/*
+.MagicScrollItem a {
+    margin: 0 !important;
+}
+*/
+.invisible,
+.hidden-selector {
+    display: none !important;
+}
+.ignore-magento-css {
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+}

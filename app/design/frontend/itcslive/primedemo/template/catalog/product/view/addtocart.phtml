@@ -1,0 +1,133 @@
+<?php
+
+/**
+
+ * Magento
+
+ *
+
+ * NOTICE OF LICENSE
+
+ *
+
+ * This source file is subject to the Academic Free License (AFL 3.0)
+
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+
+ * It is also available through the world-wide-web at this URL:
+
+ * http://opensource.org/licenses/afl-3.0.php
+
+ * If you did not receive a copy of the license and are unable to
+
+ * obtain it through the world-wide-web, please send an email
+
+ * to license@magentocommerce.com so we can send you a copy immediately.
+
+ *
+
+ * DISCLAIMER
+
+ *
+
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+
+ * versions in the future. If you wish to customize Magento for your
+
+ * needs please refer to http://www.magentocommerce.com for more information.
+
+ *
+
+ * @category    design
+
+ * @package     base_default
+
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+
+ */
+
+?>
+
+<script type="text/javascript">
+
+function qtyChange(v){
+
+var q = document.getElementById('qty').value;
+
+qty = parseInt(q);
+
+
+
+if(v=='p'){
+
+	document.getElementById('qty').value = (qty+1);
+
+}
+
+
+
+if(v=='m'){
+
+	document.getElementById('qty').value = (qty-1);
+
+}
+
+}
+
+</script>
+
+<?php $_product = $this->getProduct(); ?>
+
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+
+<?php if($_product->isSaleable()): ?>
+    <div class="add-to-cart">
+    	<?php
+    	$attribute = $_product->getResource()->getAttribute('inquiry');
+		if ($attribute)
+		{
+		   $attribute_value = $attribute ->getFrontend()->getValue($_product);
+		}
+if($attribute_value!='Yes'){
+		?>
+
+        <?php if(!$_product->isGrouped()): ?>
+
+        <?php /*?><label for="qty"><?php echo $this->__('Qty:') ?></label><?php */?>
+
+        <div class="add_btn_sec">
+
+												<img src="<?php echo $this->getSkinUrl('images/minus.jpg');?>" alt="" class="plus" onclick="qtyChange('m');" />
+
+												<input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="add" />
+
+												<img src="<?php echo $this->getSkinUrl('images/plus.jpg');?>" class="minus" onclick="qtyChange('p');" alt="" />
+
+											</div>
+
+        
+
+        <?php endif; ?>
+
+        <div class="cart_btn">
+
+
+		<button type="submit" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart cart-buttons" ><span><span><?php echo $buttonTitle ?></span></span></button>
+        </div> 
+
+        <?php echo $this->getChildHtml('', true, true) ?>
+
+    
+
+   <?php }else{ ?> 
+
+   	<input type="button" name="chksellprice" class="chksellprice" value="Ask For The Best Offer" onclick="openPopUp2();">
+
+   	<?php } ?>
+
+    </div>
+
+<?php endif; ?>
+

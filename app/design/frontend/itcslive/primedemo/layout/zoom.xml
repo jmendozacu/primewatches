@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<layout>    
+	<catalog_product_view>
+
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/zoom.css</stylesheet></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.min.js</name></action>			
+            <action method="addItem"><type>skin_js</type><name>js/zoom.js</name></action>
+        </reference>
+		
+		<reference name="product.info.media">
+			<action method="setTemplate" ifconfig="sstech_zoom/general/enabled"><template>zoom/catalog/product/view/media.phtml</template></action>
+		</reference>
+	</catalog_product_view>
+</layout>

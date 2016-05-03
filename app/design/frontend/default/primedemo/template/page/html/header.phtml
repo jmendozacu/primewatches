@@ -1,0 +1,547 @@
+<div class="wrapper">
+	<div class="page">
+<!------------ HEADER-START ---------->
+		
+		<header class="header-container">
+			<div class="header_top">
+				<div class="container">
+					<div class="header_top_Inner">
+						<p><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header_upper')->toHtml(); ?></p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="header_mid">
+				<div class="container">
+					<div class="header_mid_Inner">
+						<div class="header_mid_top">
+							<?php echo $this->getChildHtml('topLinks') ?>							
+						</div>
+					</div>
+					<div class="header_bottom">
+						<div class="logo">
+							<a href="<?php echo $this->getUrl(''); ?>"><img src="<?php echo $this->getSkinUrl('images/logo.png');?>" alt="" /></a>
+						</div>
+						<div class="search_box">
+							<?php echo $this->getLayout()->getBlock('top.search')->toHtml(); ?>
+							<!-- <form action="" method="post">
+								<input type="text" value="" />
+								<input type="submit" value="Search" />
+							</form> -->
+						</div>
+						<div class="my_account">
+							<ul>
+								<li><a href="#"><?php echo $this->getChildHtml('welcome') ?></a></li>
+								<li><a href="<?php echo $this->getUrl('') ?>customer/account">My account</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<section class="nav-container">
+				<div class="container">
+					<div class="nav_top">
+						<div class="desk_menu">
+							<div class="nav">
+								<ul>
+									<li><a href="#">Brands</a>
+										<ul class="submenu">
+											<span class="menu_box201">
+												<h4>Luxury &amp; premium brands</h4>
+												<ul>
+													<?php $_helper = Mage::helper('catalog/category') ?>												
+<?php
+$children = Mage::getModel('catalog/category')->getCategories(32);
+foreach ($children as $category) {
+
+?>
+<li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+													
+													
+												
+	<?php } ?>	
+												</ul>
+											</span>
+											
+											<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('brand_menu_block')->toHtml(); ?>
+											
+										</ul>
+									</li>     
+					                
+									<li><a href="#">Find Watches </a>
+										<ul class="submenu">
+											<span class="menu_box7">
+												<h4>By Gender</h4>
+												<ul>
+													<?php $_helper = Mage::helper('catalog/category') ?>												
+<?php
+$children = Mage::getModel('catalog/category')->getCategories(20);
+foreach ($children as $category) {
+
+?> 
+<li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+													
+													
+												
+	<?php } ?>									
+													
+												</ul>
+											</span>
+											
+											<span class="menu_box2">
+												<h4>By Price</h4>
+												<ul>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=100-10000">Below Rs 10,000</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=10000-50000">Rs 10k to Rs 50k </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=50000-100000">Rs 50k to Rs 1Lac</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=100000-200000">Rs 1Lac to Rs 2Lac </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=200000-300000">Rs 2Lac to Rs 3Lac</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=300000-500000">Rs 3Lac to Rs 5Lac </a></li> 
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=500000-1000000">Rs 5Lac to Rs 10Lac</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=1000000-">Above Rs 10Lac </a></li>
+												</ul>			
+											</span>
+											
+											<span class="menu_box4">
+												<h4>Features</h4>
+												<ul>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=68">Alarm Clock Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=67">Altimeter Watches </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=66">Automatic Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=65">Barometer Watches </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=64">Chronograph Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=63">Compass Watches </a></li> 
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=62">Date Display Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=61">Day Date Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=60">GMT Watches </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=59">Gold Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=58">Gold Plated Watches </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=57">GPS Enabled Watches </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=56">HRM Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=55">Mechanical Watches </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=54">Month Display Watches</a></li>
+												</ul>			
+											</span>
+											<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('find_watches_menu_block')->toHtml(); ?>
+										</ul>
+									</li>           
+														                
+									<li><a href="#">shop online</a>
+									<ul class="submenu">
+											
+											
+											<span class="menu_box1">
+												<h4>featured watches</h4>
+												<ul>
+													<?php
+$children = Mage::getModel('catalog/category')->getCategories(31);
+foreach ($children as $category) {
+
+?>
+<li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+													
+													
+												
+	<?php } ?>
+													
+						                        </ul>			
+											</span>
+											<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('shop_online_menu_block')->toHtml(); ?>
+											 	 
+											
+										</ul>
+									</li>
+									
+									<li><a href="#">accessories</a>
+										<ul class="submenu">
+											<span class="menu_box7">
+												<h4>Showpiece</h4>
+												<ul>
+												<?php $_helper = Mage::helper('catalog/category') ?>												
+<?php
+$children = Mage::getModel('catalog/category')->getCategories(46);
+foreach ($children as $category) {
+
+?>
+<li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+													
+													
+												
+	<?php } ?>		
+												</ul>
+												</span>
+												
+												<span class="menu_box2">
+												<h4>writing instruments</h4>
+												<ul>
+												<?php $_helper = Mage::helper('catalog/category') ?>												
+<?php
+$children = Mage::getModel('catalog/category')->getCategories(47);
+foreach ($children as $category) {
+
+?>
+<li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+													
+													
+												
+	<?php } ?>		
+												</ul>
+												</span>
+												
+												<span class="menu_box4">
+												<h4>eyewear</h4>
+												<ul>
+												<?php $_helper = Mage::helper('catalog/category') ?>												
+<?php
+$children = Mage::getModel('catalog/category')->getCategories(48);
+foreach ($children as $category) {
+
+?>
+<li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+													
+													
+												
+	<?php } ?>		
+												</ul>
+												</span>
+                                                
+                                           <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('accessories_menu_block')->toHtml(); ?>     
+                                                
+										</ul>
+									</li>
+									
+									<li><a href="#">OUR STORES </a>
+										<ul class="submenu">
+											<span class="menu_box1">
+												<h4>Our Stores</h4>
+												<ul>
+													<li><a href="http://theprimewatches.com/get-in-touch-kolkata">Kolkata</a></li>
+													<li><a href="http://theprimewatches.com/get-in-touch-mumbai">Mumbai</a></li>
+													<li><a href="http://theprimewatches.com/get-in-touch-jaipur">Jaipur</a></li>				
+												</ul>
+											</span>
+											
+											<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('locate_us_menu_block')->toHtml(); ?>
+											
+										</ul>
+									</li>
+
+									<li><a href="#">service &amp; support</a>
+										<ul class="submenu">
+											<span class="menu_box77">
+												<h4>watch service &amp; repair</h4>
+												<ul>
+                                                    <!-- <li><a href="http://theprimewatches.com/available-services ">Available Services</a></li> -->
+                                                    <li><a href="http://theprimewatches.com/five-point-check-up">5- point check up</a></li>
+                                                    <li><a href="http://theprimewatches.com/our-services">Our Services</a></li>
+												</ul>
+											</span>
+											<span class="menu_box8">
+												<h4>customer service</h4>
+												<ul>
+                                                	<li><a href="http://theprimewatches.com/service-concierge">Service concierge</a></li>
+                                                    <li><a href="http://theprimewatches.com/get-in-touch-kolkata">Contact Us</a></li>
+												</ul>
+											</span>
+											<!-- <span class="menu_box9">
+												<h4>protection</h4>
+												<ul>
+                                                    <li><a href="#">Product Warranty</a></li>
+                                                    <li><a href="#">Timepiece Protection Plan</a></li>
+												</ul>
+											</span> -->
+											<span class="menu_box10">
+												<h4>watch care</h4>
+												<ul>
+                                                	<li><a href="http://theprimewatches.com/watch-care-tips">Watch Care Tips</a></li>
+                                                    <li><a href="http://theprimewatches.com/water-resistance">Water Resistance</a></li>
+                                                    <li><a href="http://theprimewatches.com/common-technical-question">Technical Q&amp;A</a></li>
+												</ul>
+											</span>
+                                            <!--<span class="menu_box11">
+												<h4>FINANCING</h4>
+												<ul>
+                                                    <li><a href="#">Watch Maintenance</a></li>
+                                                    <li><a href="#">Water Resistance</a></li>
+                                                    <li><a href="#">Common Technical Questions</a></li>
+												</ul>
+											</span>-->
+                                            <!-- <span class="menu_box12">
+												<h4>sell your watch</h4>
+												<ul>
+                                                    <li><a href="http://theprimewatches.com/index.php/overview">Overview</a></li>
+                                                    <li><a href="http://theprimewatches.com/index.php/about-us">About Us</a></li>
+												</ul>
+											</span> -->
+                                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('service_support_menu_block')->toHtml(); ?>
+											 
+											
+										</ul>
+									</li>           
+									
+									<li><a href="http://theprimewatches.com/corporate-orders">CORPORATE ORDERS</a></li>
+									<?php $special = Mage::getModel('catalog/category')->load(44); ?>
+									<li><a href="<?php echo $special->getUrl(); ?>">SPECIAL OFFERS</a></li>          
+									
+								</ul>
+							</div>
+						</div>
+						<div class="mobile_menu">
+							<div class="nav">
+								<span id="open"><img src="<?php echo $this->getSkinUrl('images/toggle_menu.png');?>" class="tgl_menu" alt="" /></span>
+								
+								<ul id="hide"> 
+									<li><a href="#">Brands</a>
+										<ul class="submenu">
+											<span class="menu_box201">
+												<h4>Luxury &amp; premium brands</h4>
+												<ul>
+													<?php $_helper = Mage::helper('catalog/category') ?>												
+<?php
+$children = Mage::getModel('catalog/category')->getCategories(32);
+foreach ($children as $category) {
+
+?>
+<li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+													
+													
+												
+	<?php } ?>	
+												</ul>
+											</span>
+											
+											<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('brand_menu_block')->toHtml(); ?>
+											
+										</ul>
+									</li>     
+					                
+									<li><a href="#">find watches </a>
+										<ul class="submenu">
+											<span class="menu_box7">
+												<h4>By Gender</h4>
+												<ul>
+													<?php $_helper = Mage::helper('catalog/category') ?>												
+<?php
+$children = Mage::getModel('catalog/category')->getCategories(20);
+foreach ($children as $category) {
+
+?> 
+<li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+													
+													
+												
+	<?php } ?>									
+													
+												</ul>
+											</span>
+											
+											<span class="menu_box2">
+												<h4>By Price</h4>
+												<ul>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=100-10000">Below Rs 10,000</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=10000-50000">Rs 10k to Rs 50k </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=50000-100000">Rs 50k to Rs 1Lac</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=100000-200000">Rs 1Lac to Rs 2Lac </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=200000-300000">Rs 2Lac to Rs 3Lac</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=300000-500000">Rs 3Lac to Rs 5Lac </a></li> 
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=500000-1000000">Rs 5Lac to Rs 10Lac</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html/?price=1000000-">Above Rs 10Lac </a></li>
+												</ul>			
+											</span>
+											
+											<span class="menu_box4">
+												<h4>Features</h4>
+												<ul>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=68">Alarm Clock Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=67">Altimeter Watches </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=66">Automatic Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=65">Barometer Watches </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=64">Chronograph Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=63">Compass Watches </a></li> 
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=62">Date Display Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=61">Day Date Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=60">GMT Watches </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=59">Gold Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=58">Gold Plated Watches </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=57">GPS Enabled Watches </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=56">HRM Watches</a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=55">Mechanical Watches </a></li>
+													<li><a href="http://theprimewatches.com/luxury-brands.html?feature=54">Month Display Watches</a></li>
+												</ul>			
+											</span>
+											<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('find_watches_menu_block')->toHtml(); ?>
+										</ul>
+									</li>           
+														                
+									<li><a href="#">shop online</a>
+									<ul class="submenu">
+											
+											
+											<span class="menu_box1">
+												<h4>featured watches</h4>
+												<ul>
+													<?php
+$children = Mage::getModel('catalog/category')->getCategories(31);
+foreach ($children as $category) {
+
+?>
+<li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+													
+													
+												
+	<?php } ?>
+													
+						                        </ul>			
+											</span>
+											<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('shop_online_menu_block')->toHtml(); ?>
+											 	 
+											
+										</ul>
+									</li>
+									
+									<li><a href="#">accessories</a>
+										<ul class="submenu">
+											<span class="menu_box7">
+												<h4>Showpiece</h4>
+												<ul>
+												<?php $_helper = Mage::helper('catalog/category') ?>												
+<?php
+$children = Mage::getModel('catalog/category')->getCategories(46);
+foreach ($children as $category) {
+
+?>
+<li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+													
+													
+												
+	<?php } ?>		
+												</ul>
+												</span>
+												
+												<span class="menu_box2">
+												<h4>writing instruments</h4>
+												<ul>
+												<?php $_helper = Mage::helper('catalog/category') ?>												
+<?php
+$children = Mage::getModel('catalog/category')->getCategories(47);
+foreach ($children as $category) {
+
+?>
+<li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+													
+													
+												
+	<?php } ?>		
+												</ul>
+												</span>
+												
+												<span class="menu_box4">
+												<h4>eyewear</h4>
+												<ul>
+												<?php $_helper = Mage::helper('catalog/category') ?>												
+<?php
+$children = Mage::getModel('catalog/category')->getCategories(48);
+foreach ($children as $category) {
+
+?>
+<li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+													
+													
+												
+	<?php } ?>		
+												</ul>
+												</span>
+                                                
+                                           <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('accessories_menu_block')->toHtml(); ?>     
+                                                
+										</ul>
+									</li>
+									
+									<li><a href="#">Our Showrooms</a>
+										<ul class="submenu">
+											<span class="menu_box1">
+												<h4>Our Stores</h4>
+												<ul>
+													<li><a href="http://theprimewatches.com/get-in-touch-kolkata">Kolkata</a></li>
+													<li><a href="http://theprimewatches.com/get-in-touch-mumbai">Mumbai</a></li>
+													<li><a href="http://theprimewatches.com/get-in-touch-jaipur">Jaipur</a></li>				
+												</ul>
+											</span>
+											
+											<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('locate_us_menu_block')->toHtml(); ?>
+											
+										</ul>
+									</li>
+
+									<li><a href="#">service &amp; support</a>
+										<ul class="submenu">
+											<span class="menu_box77">
+												<h4>watch service &amp; repair</h4>
+												<ul>
+                                                    <!-- <li><a href="http://theprimewatches.com/index.php/available-services">Available Services</a></li> -->
+                                                    <li><a href="http://theprimewatches.com/index.php/five-point-check-up">5- point check up</a></li>
+                                                    <li><a href="http://theprimewatches.com/index.php/our-services">Our Services</a></li>
+												</ul>
+											</span>
+											<span class="menu_box8">
+												<h4>customer service</h4>
+												<ul>
+                                                	<li><a href="http://theprimewatches.com/index.php/service-concierge">Service concierge</a></li>
+                                                    <li><a href="http://theprimewatches.com/get-in-touch-kolkata">Contact Us</a></li>
+												</ul>
+											</span>
+											<!-- <span class="menu_box9">
+												<h4>protection</h4>
+												<ul>
+                                                    <li><a href="#">Product Warranty</a></li>
+                                                    <li><a href="#">Timepiece Protection Plan</a></li>
+												</ul>
+											</span> -->
+											<span class="menu_box10">
+												<h4>watch care</h4>
+												<ul>
+                                                	<li><a href="http://theprimewatches.com/index.php/watch-care-tips">Watch Care Tips</a></li>
+                                                    <li><a href="http://theprimewatches.com/water-resistance">Water Resistance</a></li>
+                                                    <li><a href="http://theprimewatches.com/common-technical-question">Common Technical Q&amp;A</a></li>
+												</ul>
+											</span>
+                                            <!--<span class="menu_box11">
+												<h4>FINANCING</h4>
+												<ul>
+                                                    <li><a href="#">Watch Maintenance</a></li>
+                                                    <li><a href="#">Water Resistance</a></li>
+                                                    <li><a href="#">Common Technical Questions</a></li>
+												</ul>
+											</span>-->
+                                            <!-- <span class="menu_box12">
+												<h4>sell your watch</h4>
+												<ul>
+                                                    <li><a href="http://theprimewatches.com/index.php/overview">Overview</a></li>
+                                                    <li><a href="http://theprimewatches.com/index.php/about-us">About Us</a></li>
+												</ul>
+											</span> -->
+                                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('service_support_menu_block')->toHtml(); ?>
+											 
+											
+										</ul>
+									</li>           
+									
+									<li><a href="http://theprimewatches.com/corporate-orders">CORPORATE ORDERS</a></li>
+									<?php $special = Mage::getModel('catalog/category')->load(44); ?>
+									<li><a href="<?php echo $special->getUrl(); ?>">SPECIAL OFFERS</a></li>          
+									
+								</ul>
+							
+								
+                             </div>
+						</div>
+						<!-- <div class="nav_search">
+							<?php
+echo $this->getLayout()->getBlock('top.search')->toHtml();
+?>
+						</div> -->
+					</div>
+				</div>
+			</section>
+				
+		</header>
