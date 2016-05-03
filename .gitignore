@@ -3,3 +3,4 @@ media/js
 media/css
 media/css_secure
 media/catalog/product/cache
+app/etc/local.xml
