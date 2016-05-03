@@ -54,6 +54,70 @@
 
  */
 
+/*require_once('app/Mage.php');
+Mage::app()->setCurrentStore(Mage::getModel('core/store')->load(Mage_Core_Model_App::ADMIN_STORE_ID));
+$installer = new Mage_Sales_Model_Mysql4_Setup;
+$attribute  = array(
+    'group'                     => 'General',
+        'input'                     => 'select',
+        'type'                      => 'int',
+        'label'                     => 'Is Brand Menu',
+        'source'                    => 'eav/entity_attribute_source_boolean',
+        'global'                    => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
+        'visible'                   => 1,
+        'required'                  => 0,
+        'visible_on_front'          => 0,
+        'is_html_allowed_on_front'  => 0,
+        'is_configurable'           => 0,
+        'searchable'                => 0,
+        'filterable'                => 0,
+        'comparable'                => 0,
+        'unique'                    => false,
+        'user_defined'              => false,
+        'default'           => '0',
+        'is_user_defined'           => false,
+        'used_in_product_listing'   => true
+);
+$installer->addAttribute('catalog_category', 'brand_menu', $attribute);
+$installer->endSetup();*/ 
+
+/*require_once('app/Mage.php');
+Mage::app()->setCurrentStore(Mage::getModel('core/store')->load(Mage_Core_Model_App::ADMIN_STORE_ID));
+$installer = new Mage_Sales_Model_Mysql4_Setup;
+$attribute  = array(
+    'group'         => 'General',
+    'input'         => 'text',
+    'type'          => 'int',
+    'label'         => 'Brand Menu Position',
+    'backend'       => '',
+    'visible'       => true,
+    'required'      => false,
+    'visible_on_front' => true,
+    'global'        => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
+);
+$installer->addAttribute('catalog_category', 'brand_value', $attribute);
+$installer->endSetup();*/
+
+/*require_once('app/Mage.php');
+Mage::app()->setCurrentStore(Mage::getModel('core/store')->load(Mage_Core_Model_App::ADMIN_STORE_ID));
+$installer = new Mage_Sales_Model_Mysql4_Setup;
+$attribute  = array(
+    'group'         => 'General',
+    'input'         => 'text',
+    'type'          => 'varchar',
+    'label'         => 'Brand Menu Name',
+    'backend'       => '',
+    'visible'       => true,
+    'required'      => false,
+    'visible_on_front' => true,
+    'global'        => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
+);
+$installer->addAttribute('catalog_category', 'brand_menu_name', $attribute);
+$installer->endSetup();*/
+
+
+
+
 ?>
 
 
@@ -269,40 +333,21 @@
                   <?php $_helper = Mage::helper('catalog/category') ?>
 
                   <?php
-
-$children = Mage::getModel('catalog/category')->getCategories(32);
+//subikar cat
+$children = Mage::getModel('catalog/category')
+			->getCollection()
+			->addAttributeToSelect(array('name', 'image', 'description')) //  get some attribute.
+			->addAttributeToFilter('brand_menu', 1)
+			->addAttributeToSort('brand_value', Varien_Data_Collection::SORT_ORDER_ASC)
+			->load();
 
 $j=1;
 
 foreach ($children as $category) {
-
-if($j<=10) {
-
 ?>
-
      <li><a href="<?php echo $_helper->getCategoryUrl($category) ?>" class="sidemenu <?php echo ($j==1)?'topselected':''; ?>" id="top_tab_<?php echo $j; ?>"><span><?php echo $category->getName();?></span><i class="fa fa-caret-right"></i></a> </li>
-
-<?php 
-
-} 
-
-else{ 
-
-?>
-
-	<li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'brands.html'; ?>">View All <i class="fa fa-angle-double-right faa-horizontal animated"></i></a></li> 
-
-<?php
-
-break;
-
-}
-
-$j++;
-
-} 
-
-?>
+<?php $j++; } ?>
+<li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'brands.html'; ?>">View All <i class="fa fa-angle-double-right faa-horizontal animated"></i></a></li> 
 
 </ul>
 
