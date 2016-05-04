@@ -86,6 +86,7 @@
 				      $id = str_replace(" ", "_",$id);
 					  $id = str_replace("(", "_",$id);
 					  $id = str_replace(")", "_",$id);
+					  $id = str_replace("price", "priceleft",$id);
 					  if($this->__($_filter->getName()) == 'Category')
 					    continue;
 						

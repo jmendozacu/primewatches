@@ -50,7 +50,7 @@
 
 * { margin:0; padding:0; }
 
-body          { background:#fff/* url(../images/bkg_body.gif) 0 0 repeat*/; font:14px/1.55 arial, helvetica, sans-serif; color:#444; /*text-align:center;*/      overflow-x: hidden;}
+body          { font:14px/1.55 arial, helvetica, sans-serif; color:#444;overflow-x: hidden;}
 
 img           { border:0; vertical-align:top; }
 
@@ -588,9 +588,9 @@ p.required { font-size:13px; text-align:left; color:#333; }
 
 .data-table { width:100%;}
 
-.data-table tr.odd  { background:#fff }
+.data-table tr.odd  {}
 
-.data-table tr.even { background:#fcfcfc; }
+.data-table tr.even {}
 
 .data-table tr.last th,
 
@@ -602,11 +602,11 @@ p.required { font-size:13px; text-align:left; color:#333; }
 
 .data-table th a { color:#fff; }
 
-.data-table td { /*padding:3px 8px; */  vertical-align: middle;}
+.data-table td { vertical-align: middle;}
 
 .data-table thead,
 
-.data-table thead tr {/* background:#e9e9e9;*/ }
+.data-table thead tr { background:#e9e9e9; }
 
 .data-table tfoot { border-bottom:1px solid #d9dde3; }
 
@@ -616,7 +616,7 @@ p.required { font-size:13px; text-align:left; color:#333; }
 
 .data-table tbody th,
 
-.data-table tbody td { background:rgba(245, 245, 245, 0.33); }
+.data-table tbody td {border-bottom: 1px solid #c6c6c6;}
 
 .data-table tfoot strong { font-size:14px; }
 

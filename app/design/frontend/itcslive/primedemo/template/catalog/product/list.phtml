@@ -69,8 +69,8 @@
                                  </div>            
 								
 								<div class="product_box_right">
-                                    <h6>Model No. <br /><?php echo $_product->getResource()->getAttribute('model_number')->getFrontend()->getValue($_product);?></h6> 
-									<h5 class="productname"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></h5>
+                                    <h5 class="productname"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></h5>
+									<h6>Model No. <br /><?php echo $_product->getResource()->getAttribute('model_number')->getFrontend()->getValue($_product);?></h6> 
 									<?php $reviewHelper = $this->getLayout()->createBlock('review/helper');
 											if($reviewHelper->getSummaryHtml($_product, 'short', false)!=''){				
 										 echo $reviewHelper->getSummaryHtml($_product, 'short', false);
@@ -86,12 +86,11 @@
 		<div class="currency">
     	<h5 class="old-price"><span class="price-label">MRP: </span>
 		<span><?php echo Mage::helper('core')->formatPrice($_product->getPrice()); ?></span></h5>
-    	<h4 class="new-price"><span class="price-label">MRP: </span>
-		<span><?php echo Mage::helper('core')->formatPrice($_product->getFinalPrice()); ?></span></h4>
+    	<h4 class="new-price"><span><?php echo Mage::helper('core')->formatPrice($_product->getFinalPrice()); ?></span></h4>
 		</div>
     	<?php }else{ ?>
 				<div class="currency">
-				<h4><span class="price-label">MRP: </span><?php echo Mage::helper('core')->formatPrice($_product->getPrice()); ?></h4>
+				<h4><?php echo Mage::helper('core')->formatPrice($_product->getPrice()); ?></h4>
 				</div>
 		<?php } ?>
          <span class="emi">EMI available</span>    

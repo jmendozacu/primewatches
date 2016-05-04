@@ -73,11 +73,11 @@ $post = Mage::app()->getRequest()->getParams();
 
 ?>
 
-<div class="page-title category-title">
+<div class="page-title category-title desktop-none">
      <div class="back-arrow"><a href="javascript:window.history.back();" class="back-to-history">back</a></div>
-    <div class="heading-brand"><h1><span><?php echo (!empty($_category))?$this->escapeHtml($_category->getName()):"Search Results for ".$post['q']; ?> Watches</span>
+     <div class="heading-brand"><h1><span><?php echo (!empty($_category))?$this->escapeHtml($_category->getName()):"Search Results for ".$post['q']; ?> Watches</span>
 
-	<div class="numberofwatches">(<?php echo $this->getCollection()->getSize(); ?> watches in stock)</div>
+	<!--<div class="numberofwatches">(<?php //echo $this->getCollection()->getSize(); ?> watches in stock)</div>-->
     </h1>
 	</div>
 								<div class="grid-wrap">

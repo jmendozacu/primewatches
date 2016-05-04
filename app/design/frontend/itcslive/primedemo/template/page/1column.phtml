@@ -85,18 +85,10 @@
 
 		<?php $cmsPageUrlKey = Mage::getSingleton('cms/page')->getIdentifier(); ?>
 
-		<?php
-
-			if($cmsPageUrlKey == "corporate-orders"){
-
-		?>	
-
+		<?php if($cmsPageUrlKey == "corporate-orders"){	?>	
 			<div class="concierge_banner_section">
-
         		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('corporate_banner')->toHtml(); ?>
-
             </div>
-
 		<?php } ?>
 
 			<div class="container">
@@ -121,11 +113,7 @@
 
 			</div>
 
-			<?php
-
-			if($cmsPageUrlKey == "corporate-orders"){
-
-			?>
+			<?php if($cmsPageUrlKey == "corporate-orders"){	?>
 
 			<div class="pdt_sec">
 
@@ -139,7 +127,7 @@
 
 						//gets all sub categories of parent category
 
-						$cats = Mage::getModel('catalog/category')->load(8)->getChildren();
+						$cats = Mage::getModel('catalog/category')->load(32)->getChildren();
 
 						$catIds = explode(',',$cats);
 
@@ -194,11 +182,7 @@
 
 				</div>
 
-			<?php
-
-				}
-
-			?>
+			<?php } ?>
 
         </section>
 
