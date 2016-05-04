@@ -113,10 +113,10 @@
 
 			</div>
 
-			<?php if($cmsPageUrlKey == "corporate-orders"){	?>
+			<?php if($cmsPageUrlKey == "corporate-orders" || $cmsPageUrlKey == "all-brands"){	?>
 
 			<div class="pdt_sec">
-
+               <?php if($cmsPageUrlKey == "corporate-orders" || $cmsPageUrlKey == "all-brands"){	?> 
 				<div class="corporate_heading"><h3>Our Brands</h3></div>
 
 				<div class="logo_gal">
@@ -164,8 +164,9 @@
 						</ul>
 
 					</div>
-
-					<div class="our_watch_care_tips_section">
+			   <?php } ?>	
+               <?php if($cmsPageUrlKey == "corporate-orders"){	?>  
+				<div class="our_watch_care_tips_section">
 
                     	<div class="git_txt23">Our Services</div>	
 
@@ -179,8 +180,8 @@
                         </div>
 
 					</div>
-
-				</div>
+               <?php } ?>   
+			</div>
 
 			<?php } ?>
 
