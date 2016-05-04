@@ -54,7 +54,7 @@
 
  */
 
-require_once('app/Mage.php');
+/*require_once('app/Mage.php');
 Mage::app()->setCurrentStore(Mage::getModel('core/store')->load(Mage_Core_Model_App::ADMIN_STORE_ID));
 $installer = new Mage_Sales_Model_Mysql4_Setup;
 $attribute  = array(
@@ -79,9 +79,9 @@ $attribute  = array(
         'used_in_product_listing'   => true
 );
 $installer->addAttribute('catalog_category', 'brand_menu', $attribute);
-$installer->endSetup(); 
+$installer->endSetup();*/ 
 
-require_once('app/Mage.php');
+/*require_once('app/Mage.php');
 Mage::app()->setCurrentStore(Mage::getModel('core/store')->load(Mage_Core_Model_App::ADMIN_STORE_ID));
 $installer = new Mage_Sales_Model_Mysql4_Setup;
 $attribute  = array(
@@ -96,7 +96,7 @@ $attribute  = array(
     'global'        => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
 );
 $installer->addAttribute('catalog_category', 'brand_value', $attribute);
-$installer->endSetup();
+$installer->endSetup();*/ 
 
 
 
@@ -348,9 +348,9 @@ foreach ($children as $category) {
 
       $_productCollection = Mage::getModel('catalog/category')->load($category->entity_id)
 
-             ->getProductCollection()
+             ->getProductCollection();
 
-             ->addAttributeToSort('name', Varien_Data_Collection::SORT_ORDER_ASC);
+            // ->addAttributeToSort('name', Varien_Data_Collection::SORT_ORDER_ASC);
 
       
 

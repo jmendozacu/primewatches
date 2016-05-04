@@ -1564,7 +1564,7 @@ tr.summary-details-excluded { font-style:italic; }
 
 .add-to-box { margin:10px 0; }
 
-.add-to-box .add-to-cart {/* margin:10px 0; border:1px solid #eee; background-color:#f8f8f8; padding:10px;*/ text-align:right; }
+.add-to-box .add-to-cart {/* margin:10px 0; border:1px solid #eee; background-color:#f8f8f8; padding:10px;*/ text-align:center; }
 
 .add-to-box .add-to-cart .paypal-logo { float:left; }
 
