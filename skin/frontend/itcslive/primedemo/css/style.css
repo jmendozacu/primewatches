@@ -12544,7 +12544,7 @@ cursor: pointer;
 
 
 
-.cms-login .account-login{ width:100%;}
+.cms-login .account-login{ width:100%;padding-bottom: 100px;}
 
 
 
@@ -12620,7 +12620,7 @@ cursor: pointer;
 
 
 
-.sign_link{ margin-bottom:30px;}
+.sign_link{ margin-bottom:30px;color: #fff;text-align: center;}
 
 
 
@@ -12648,7 +12648,7 @@ cursor: pointer;
 
 
 
-.cms-sign-up .account-create{ margin-top:0px; width:100%;}
+.cms-sign-up .account-create{ margin-top:0px; width:100%;padding-bottom: 100px;}
 
 
 
