@@ -98,7 +98,7 @@ $attribute  = array(
 $installer->addAttribute('catalog_category', 'brand_value', $attribute);
 $installer->endSetup();*/ 
 
-
+*/
 
 
 
@@ -246,16 +246,16 @@ $installer->endSetup();*/
 
 <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()){ ?>	<span class="mobile-none"><li class="first mobile-inone"><a href="javascript:void(0);" class="login" title="Log In"><img src="<?php echo $this->getSkinUrl('images/top_icon1.png');?>">Log In</a></li>	</span>
 <?php }else{ ?>
-<li class="first"><a href="<?php echo $this->getUrl('') ?>customer/account/logout" title="Log Out"><img src="<?php echo $this->getSkinUrl('images/top_icon1.png');?>">Log Out</a></li>
+<li class="first"><a href="<?php echo Mage::getBaseUrl( Mage_Core_Model_Store::URL_TYPE_WEB, true ) ?>customer/account/logout" title="Log Out"><img src="<?php echo $this->getSkinUrl('images/top_icon1.png');?>">Log Out</a></li>
 <?php } ?>			  
             <span class="mobile-none">
             <?php if(Mage::getSingleton('customer/session')->isLoggedIn()){ ?>  
-			<li><a href="<?php echo $this->getUrl('') ?>customer/account" title="Create an account"><img src="<?php echo $this->getSkinUrl('images/top_icon2.png');?>">My Account</a></li>
+			<li><a href="<?php echo Mage::getBaseUrl( Mage_Core_Model_Store::URL_TYPE_WEB, true ) ?>customer/account" title="Create an account"><img src="<?php echo $this->getSkinUrl('images/top_icon2.png');?>">My Account</a></li>
 			<?php } ?>
 
 			
 
-            <li><a href="<?php echo $this->getUrl(''); ?>checkout/cart/" title="My Cart" class="top-link-cart"><img src="<?php echo $this->getSkinUrl('images/top_icon3.png');?>">My Cart</a></li>
+            <li><a href="<?php echo Mage::getBaseUrl( Mage_Core_Model_Store::URL_TYPE_WEB, true ); ?>checkout/cart/" title="My Cart" class="top-link-cart"><img src="<?php echo $this->getSkinUrl('images/top_icon3.png');?>">My Cart</a></li>
 
 			
 
@@ -269,7 +269,7 @@ $installer->endSetup();*/
 
       <div class="header_bottom">
 
-        <div class="logo"> <a href="<?php echo $this->getUrl(''); ?>"><img src="<?php echo $this->getSkinUrl('images/logo.png');?>" alt="" /></a> </div>
+        <div class="logo"> <a href="<?php echo Mage::getBaseUrl( Mage_Core_Model_Store::URL_TYPE_WEB, true ); ?>"><img src="<?php echo $this->getSkinUrl('images/logo.png');?>" alt="" /></a> </div>
 
         <div class="search_box mobile-none">
 
@@ -966,7 +966,7 @@ foreach ($children as $category) {
         <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()){ ?> 
 		<li><a href="<?php echo $this->getUrl() ?>login" class="user-name">Sign In <span>|</span></a><a href="<?php echo $this->getUrl() ?>sign-up">Register</a></li>
 		<?php } else { ?>
-		<li><?php echo $this->getChildHtml('welcome') ?> <span>|</span><a href="<?php echo $this->getUrl('') ?>customer/account/logout" title="Log Out"><img src="<?php echo $this->getSkinUrl('images/top_icon1.png');?>">Log Out</a></li>  
+		<li><?php echo $this->getChildHtml('welcome') ?> <span>|</span><a href="<?php echo Mage::getBaseUrl( Mage_Core_Model_Store::URL_TYPE_WEB, true ) ?>customer/account/logout" title="Log Out"><img src="<?php echo $this->getSkinUrl('images/top_icon1.png');?>">Log Out</a></li>  
 		<?php } ?>
 
 		</ul>
@@ -979,7 +979,7 @@ foreach ($children as $category) {
 
     <div class="watchguide"><h1>THE WATCH GUIDE</h1></div>
 
-  <a class="desktop-none  mobile-logo-block" href="<?php echo $this->getUrl(''); ?>"><img src="<?php echo $this->getSkinUrl('images/mobile-logo.png');?>" alt="" /></a> 
+  <a class="desktop-none  mobile-logo-block" href="<?php echo Mage::getBaseUrl( Mage_Core_Model_Store::URL_TYPE_WEB, true ); ?>"><img src="<?php echo $this->getSkinUrl('images/mobile-logo.png');?>" alt="" /></a> 
 
   </div>
 
@@ -989,7 +989,7 @@ foreach ($children as $category) {
 
 	 
 
-	<li class="last"><a href="<?php echo $this->getUrl(''); ?>checkout/cart/" title="My Cart" class="top-link-cart"><i class="fa fa-shopping-cart"></i></a></li>
+	<li class="last"><a href="<?php echo Mage::getBaseUrl( Mage_Core_Model_Store::URL_TYPE_WEB, true ); ?>checkout/cart/" title="My Cart" class="top-link-cart"><i class="fa fa-shopping-cart"></i></a></li>
 
 	<li><a href="<?php echo $this->getUrl('wishlist') ?>" title="wishlist" class="top-wishlist">wishlist</a></li>
 
