@@ -326,7 +326,7 @@ foreach ($children as $category) {
 ?>
      <li><a href="<?php echo $_helper->getCategoryUrl($category) ?>" class="sidemenu <?php echo ($j==1)?'topselected':''; ?>" id="top_tab_<?php echo $j; ?>"><span><?php echo $category->getName();?></span><i class="fa fa-caret-right"></i></a> </li>
 <?php $j++; } ?>
-<li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'brands.html'; ?>">View All <i class="fa fa-angle-double-right faa-horizontal animated"></i></a></li> 
+<li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'all-brands'; ?>">View All <i class="fa fa-angle-double-right faa-horizontal animated"></i></a></li> 
 
 </ul>
 
