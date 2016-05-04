@@ -217,9 +217,15 @@
 		<div class=row-fluid>
 			<div class="span6">
 				<div class="quick-share">
-				<i class="fa fa-upload"></i><br/>
-				Share <br/>
-				with your friends
+				
+				<ul class="social-icons standard">
+					<li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $producturl; ?>" class="st_fb" target="_blank"></a></li>
+					<li><a href="https://twitter.com/share?url=<?php echo $producturl; ?>&amp;&amp;via=ThePrime&amp;&amp;text=<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>Model: #<?php echo $_product->getSku(); ?>" class="st_tweet" target="_blank"></a></li>
+					<li><a href="https://plus.google.com/share?url=<?php echo $producturl; ?>" class="st_gplus" target="_blank"></a></li>
+					<li><a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());" class="st_pint"></a></li>
+					 <li class="wtapp"><span class="wt_app"><iframe width="15" height="16" scrolling="no" style="border: 0px; overflow: hidden;"></iframe></span></li>
+				</ul>
+				
 				</div>
 			</div>	
 					

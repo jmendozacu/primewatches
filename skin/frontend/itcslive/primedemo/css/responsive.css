@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/* CSS Document -Edited */
+/* CSS Document */
 
 @media only screen and (min-width:1000px) and (max-width:1199px)
 
@@ -2247,25 +2247,25 @@ input:-webkit-autofill {   -webkit-box-shadow: 0 0 0px 1000px white inset !impor
     width: 99%;
     z-index: 100;
 }
-.sharing-options li {
+.social-icons li {
     display: inline-block;
 }
-.sharing-options li .st_fb {
+.social-icons li .st_fb {
 }
 
-.sharing-options li a {
+.social-icons li a {
     background: url(../images/sharethis.png) no-repeat;
     display: block;
     height: 16px;
     width: 16px;
 }
-.sharing-options li .st_tweet {
+.social-icons li .st_tweet {
     background-position: 0 -60px;
 }
-.sharing-options li .st_gplus {
+.social-icons li .st_gplus {
     background-position: 0 -20px;
 }
-.sharing-options li .st_pint {
+.social-icons li .st_pint {
     background-position: 0 -40px;
 }
 .wa_btn_s {
