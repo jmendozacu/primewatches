@@ -349,9 +349,6 @@ foreach ($children as $category) {
       
 
 	$image = Mage::getModel('catalog/category')->load($category->entity_id)->getImage();
-
-if($j<=10) {
-
 ?>
 
 	 <div class="common-category" id="top_tab_<?php echo $j; ?>_body">
@@ -431,14 +428,6 @@ if($j<=10) {
 	 </div>
 
 <?php 
-
-} 
-
-else{ 
-
-break;
-
-}
 
 $j++;
 
