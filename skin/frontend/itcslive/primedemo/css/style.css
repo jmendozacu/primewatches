@@ -950,7 +950,7 @@ background:#fff; z-index: 9999; display: none; padding: 0px 0px 0 0; max-height:
 
 
 
-.menu_box201{ width:25%; float: left;border-right: 1px solid #CCCBCB; border-left: 1px solid #CCCBCB;}
+.menu_box201{ width:50%; float: left;border-right: 1px solid #CCCBCB; border-left: 1px solid #CCCBCB;}
 
 
 
@@ -966,7 +966,7 @@ background:#fff; z-index: 9999; display: none; padding: 0px 0px 0 0; max-height:
 
 
 
-.menu_box201 ul{ margin: 0px; list-style: none; float: left; width: 100%;max-height: 380px;overflow-y: scroll;}
+.menu_box201 ul{ margin: 0px; list-style: none; float: left; width: 100%;}
 
 
 
@@ -974,7 +974,7 @@ background:#fff; z-index: 9999; display: none; padding: 0px 0px 0 0; max-height:
 
 
 
-.menu_box201 ul li{  margin: 0px !important; list-style: none; float: left; width:100%; cursor:pointer; text-indent:10px; font-weight:bold; border-top: 1px solid #ccc;/*transition: all 0.5s ease-in-out;*/}
+.menu_box201 ul li{  margin: 0px !important; list-style: none; float: left; width:33.33333%; cursor:pointer; text-indent:10px; font-weight:bold; border-top: 1px solid #ccc;/*transition: all 0.5s ease-in-out;*/}
 
 
 
@@ -11436,7 +11436,7 @@ cursor: pointer;
 
 
 
-.common-category{ width:75%; float:left;}
+.common-category{ width:50%; float:left;}
 
 
 
@@ -11444,13 +11444,9 @@ cursor: pointer;
 
 
 
-.common-category-inner-right{ widows:20%; float:right; margin-top:125px;}
-
-
-
-.common-category .product_item_sec{ width:80%;}
-
-
+.common-category-inner-right{float:right; margin-top:125px;}
+.common-category .product_item_sec{}
+.menu_thumb_link img { width::90%;}
 
 .common-category .product_item_sec .products-list .product_item{ min-height:365px !important; margin:10px;}
 .common-category .product_item_sec .products-list .product_item .product_box_right{ min-height:147px;}

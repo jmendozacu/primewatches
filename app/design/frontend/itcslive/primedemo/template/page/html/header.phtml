@@ -363,7 +363,7 @@ foreach ($children as $category) {
 
     <?php foreach ($_productCollection as $_product): ?>
 
-		<?php if($i++ == 4) break; ?>
+		<?php if($i++ == 3) break; ?>
 
     	<?php $_product = Mage::getModel('catalog/product')->setStoreId($storeId)->load($_product->getId()); ?>
 
@@ -379,7 +379,7 @@ foreach ($children as $category) {
 
 						<div class="product_box_left">
 
-					<a href="<?php echo $_product->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(190,218) ?>" alt="" /></a>
+					<a href="<?php echo $_product->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(165,218) ?>" alt="" /></a>
 
 				 <?php if($discount!=0){?> <span class="save">Save <?php echo round($discount);?>%</span><?php } ?>
 
