@@ -97,6 +97,7 @@ $attribute  = array(
 );
 $installer->addAttribute('catalog_category', 'brand_value', $attribute);
 $installer->endSetup();*/ 
+ $_helper = $this->helper('catalog/product_compare');
 ?>
 
 
@@ -108,6 +109,7 @@ $installer->endSetup();*/
 
   <header class="header-container">
 
+<?php if(!Mage::helper('mobiledetect')->isMobileDevice()) {?>
   <div class="container">
 
   <input type="hidden" id="baseurl" name="baseurl" value="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>" />
@@ -225,7 +227,6 @@ $installer->endSetup();*/
     </div>
 
   </div>
-
   <div class="header_mid">
 
     <div class="container">
@@ -286,157 +287,36 @@ $installer->endSetup();*/
     </div>
 
   </div>
+ <?php } ?>
+  
 
   <section class="nav-container">
 
   <div class="container">
 
     <div class="nav_top">
-
-     <div class="desk_menu">
+         <div class="desk_menu">
 
         <div class="nav">
 
           <ul>
 
             <li><a href="#" class="menu-brands">Brands</a>
-
-              <ul class="submenu">
-
+                <ul class="submenu">
                 <span class="menu_box201">
-
                 <h4>Luxury &amp; premium brands</h4>
-
                 <ul>
-
                   <?php $_helper = Mage::helper('catalog/category') ?>
-
                   <?php
-//subikar cat
-$children = Mage::getModel('catalog/category')
-			->getCollection()
-			->addAttributeToSelect(array('name', 'image', 'description')) //  get some attribute.
-			->addAttributeToFilter('brand_menu', 1)
-			->addAttributeToSort('brand_value', Varien_Data_Collection::SORT_ORDER_ASC)
-			->load();
-
-$j=1;
-
-foreach ($children as $category) {
-?>
-     <li><a href="<?php echo $_helper->getCategoryUrl($category) ?>" class="sidemenu <?php echo ($j==1)?'topselected':''; ?>" id="top_tab_<?php echo $j; ?>"><span><?php echo $category->getName();?></span><i class="fa fa-caret-right"></i></a> </li>
-<?php $j++; } ?>
-<li><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'all-brands'; ?>">View All <i class="fa fa-angle-double-right faa-horizontal animated"></i></a></li> 
-
-</ul>
-
-</span> 
-
-<?php
-
-$j=1;
-
-//$_helper = $this->helper('catalog/output'); 
-
-foreach ($children as $category) {
-
-      $_productCollection = Mage::getModel('catalog/category')->load($category->entity_id)
-
-             ->getProductCollection();
-
-            // ->addAttributeToSort('name', Varien_Data_Collection::SORT_ORDER_ASC);
-
-      
-
-	$image = Mage::getModel('catalog/category')->load($category->entity_id)->getImage();
-?>
-
-	 <div class="common-category" id="top_tab_<?php echo $j; ?>_body">
-
-       
-
-<div class="product_item_sec">
-
-    <?php //echo $category->entity_id; ?>
-
-    <?php $_iterator = 0; $i=1; ?>
-
-    <?php foreach ($_productCollection as $_product): ?>
-
-		<?php if($i++ == 3) break; ?>
-
-    	<?php $_product = Mage::getModel('catalog/product')->setStoreId($storeId)->load($_product->getId()); ?>
-
-    	<?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); 
-
-    	$discountprice=$_product->getPrice()-$_product->getFinalPrice();
-
-    $discount=($discountprice*100)/$_product->getPrice();?>	
-
-			<ol class="products-list" id="products-list">	
-
-					<div class="product_item">
-
-						<div class="product_box_left">
-
-					<a href="<?php echo $_product->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(165,218) ?>" alt="" /></a>
-
-				 <?php if($discount!=0){?> <span class="save">Save <?php echo round($discount);?>%</span><?php } ?>
-
-				 </div>            
-
-				
-
-				<div class="product_box_right">
-
-					<h5><?php echo $_product->getName(); ?></h5>
-
-					<h6><?php echo $_product->getResource()->getAttribute('model_number')->getFrontend()->getValue($_product);?></h6>
-
-     <?php if($discount>0){?>
-
-    	<h5><?php echo Mage::helper('core')->formatPrice($_product->getPrice()); ?></h5>
-
-    	<h4><?php echo Mage::helper('core')->formatPrice($_product->getFinalPrice()); ?></h4>
-
-    	<?php }else{ ?>
-
-			<h4><?php echo Mage::helper('core')->formatPrice($_product->getPrice()); ?></h4>
-
-		<?php } ?>
-
-		</div>
-
-	</div>
-
-		</ol>	
-
-	<?php endforeach; ?>			
-
-   <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>					
-
-</div>
-
-<div class="common-category-inner-right">
-
-<a class="menu_thumb_link" href="#"><img src="<?php echo ($image !='')? Mage::getBaseUrl('media').'catalog/category/'.$image:'' ?>"></a>
-
-	  <p><a href="<?php echo $_helper->getCategoryUrl($category) ?>" class="buynow">VIEW ALL <i class="fa fa-angle-double-right faa-horizontal animated"></i></a></p>
-
-	  </div>
-
-	 </div>
-
-<?php 
-
-$j++;
-
-} 
-
-?>
-
+				$children = Mage::getModel('catalog/category')->getCategories(32);
+				foreach ($children as $category) {
+				?>
+                  <li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
+                  <?php } ?>
+                </ul>
+                </span> 
               </ul>
-
+ 
             </li>
 
             <li><a href="#">Find Watches </a>
@@ -453,11 +333,11 @@ $j++;
 
                   <?php
 
-$children = Mage::getModel('catalog/category')->getCategories(20);
-
-foreach ($children as $category) {
-
-?>
+				$children = Mage::getModel('catalog/category')->getCategories(20);
+				
+				foreach ($children as $category) {
+				
+				?>
 
                   <li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
 
@@ -545,11 +425,11 @@ foreach ($children as $category) {
 
                   <?php
 
-$children = Mage::getModel('catalog/category')->getCategories(31);
-
-foreach ($children as $category) {
-
-?>
+					$children = Mage::getModel('catalog/category')->getCategories(31);
+					
+					foreach ($children as $category) {
+					
+				 ?>
 
                   <li><a href="<?php echo $_helper->getCategoryUrl($category); ?>"><?php echo $category->getName();?></a></li>
 
@@ -557,7 +437,7 @@ foreach ($children as $category) {
 
                 </ul>
 
-                </span> <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('shop_online_menu_block')->toHtml(); ?>
+                </span> <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('shop_online_menu_block')->toHtml(); ?>
 
               </ul>
 
@@ -712,7 +592,6 @@ foreach ($children as $category) {
         </div>
 
       </div>      
-
 	<div class="mobile_menu">
 
 	<div class=" mobile-element-block nav-list">
@@ -1008,6 +887,7 @@ foreach ($children as $category) {
 
         </div>
 
+
 			 </li>
 
  
@@ -1020,46 +900,12 @@ foreach ($children as $category) {
 
 		  </div>
 
-</div>	
 </div>
-
+<?php //if(!Mage::helper('mobiledetect')->isMobileDevice()) {?>
+<?php //} else { ?>
+<?php //} ?>	
+    </div>
 </div>
 <div class="tagline">Luxury watch boutique</div>
 </section>
-
 </header>
-
-<script>
-
-	jQuery(".menu-brands").mouseover(function(){
-
-	   jQuery('.common-category').hide("slow");
-
-	   jQuery('#top_tab_1_body').show("slow");
-
-	});
-
-	jQuery( ".sidemenu" ).mouseover(function() {
-
-	   var cur_id = jQuery(this).attr("id");
-
-	   if(!jQuery('#'+cur_id+'_body').is(':visible'))
-
-	     {
-
-		   jQuery('.common-category').hide("slow");
-
-		   jQuery('.sidemenu').removeClass('topselected');
-
-		   jQuery('.common-category').hide("slow");
-
-		   jQuery('#'+cur_id).addClass('topselected');
-
-		   jQuery('#'+cur_id+'_body').show("slow");	
-
-	     }
-
-	   });
-
-</script>  
-

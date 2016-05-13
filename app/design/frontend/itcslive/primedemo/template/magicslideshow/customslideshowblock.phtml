@@ -55,9 +55,11 @@ $title = $tool->params->getValue('block-title');
 <div class="block-content banner_left">
 	<?php echo $tool->getMainTemplate($magicslideshowData, array("id" => "customslideshowblock")); ?>
 </div>
+<?php if(!Mage::helper('mobiledetect')->isMobileDevice()) {?>
 <div class="col-left sidebar">
 	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_right1')->toHtml(); ?>
 </div>	
+
 <div class="clear"></div>
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_button')->toHtml(); ?>
 <div class="clear"></div>
@@ -94,4 +96,5 @@ $title = $tool->params->getValue('block-title');
 </div>
 
 </div>
+<?php } ?>
 <div class="clear"></div>
