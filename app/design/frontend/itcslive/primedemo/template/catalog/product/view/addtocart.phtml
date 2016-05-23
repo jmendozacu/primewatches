@@ -91,23 +91,22 @@ if(v=='m'){
 		   $attribute_value = $attribute ->getFrontend()->getValue($_product);
 		}
 if($attribute_value!='Yes'){
+		
 		?>
-
-        <?php if(!$_product->isGrouped()): ?>
-
-        <?php /*?><label for="qty"><?php echo $this->__('Qty:') ?></label><?php */?>
-
-        <div class="add_btn_sec">
-
-												<img src="<?php echo $this->getSkinUrl('images/minus.jpg');?>" alt="" class="plus" onclick="qtyChange('m');" />
-
-												<input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="add" />
-
-												<img src="<?php echo $this->getSkinUrl('images/plus.jpg');?>" class="minus" onclick="qtyChange('p');" alt="" />
-
-											</div>
-
-        
+				
+			<?php if(!$_product->isGrouped()): ?>
+	
+			<?php /*?><label for="qty"><?php echo $this->__('Qty:') ?></label><?php */?>
+	
+			<div class="add_btn_sec">
+	
+						<img src="<?php echo $this->getSkinUrl('images/minus.jpg');?>" alt="" class="plus" onclick="qtyChange('m');" />
+	
+						<input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="add" />
+	
+						<img src="<?php echo $this->getSkinUrl('images/plus.jpg');?>" class="minus" onclick="qtyChange('p');" alt="" />
+	
+			</div>
 
         <?php endif; ?>
 
@@ -116,14 +115,23 @@ if($attribute_value!='Yes'){
 
 		<button type="submit" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart cart-buttons" ><span><span><?php echo $buttonTitle ?></span></span></button>
         </div> 
-
+<input type="button" name="chksellprice" class="chksellprice" value="Ask For The Best Offer" onclick="openPopUp2();">
         <?php echo $this->getChildHtml('', true, true) ?>
 
-    
+    	
+<?php //echo $attribute_value;exit; ?>
 
-   <?php }else{ ?> 
+   
+    <?php } else{ ?> 
+				
+<div class="cart_btn">
 
-   	<input type="button" name="chksellprice" class="chksellprice" value="Ask For The Best Offer" onclick="openPopUp2();">
+
+		<button type="submit" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart cart-buttons" ><span><span><?php echo $buttonTitle ?></span></span></button>
+</div>
+  
+
+   	<!--<input type="button" name="chksellprice" class="chksellprice" value="Ask For The Best Offer" onclick="openPopUp2();">-->
 
    	<?php } ?>
 
