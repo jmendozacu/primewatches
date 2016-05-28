@@ -2737,7 +2737,7 @@ border-bottom-left-radius: 10px; padding:5px 10px 10px; z-index:100000; display:
 
 
 /* 28-058-2016 */
-.prod-pat-wrap {min-height:255px !important;}
+.prod-pat-wrap {min-height:248px !important;}
 .prod-pat-wrap .prod-brnd, .prod-pat-wrap .prod-modl, .prod-pat-wrap .prod-mrp {color:#fff;}
 
 .main .product_item {min-height:554px !important;}
@@ -2746,6 +2746,10 @@ border-bottom-left-radius: 10px; padding:5px 10px 10px; z-index:100000; display:
 
 .main-right .product_item {min-height:284px !important;}
 .main-right .product_item .prod-pat-wrap {min-height:265px !important;}
+
+.home .product_box_right {min-height:295px;}
+
+.main-right product_item_sec .product_box_right {min-height:282px;}
 
 
 
