@@ -2729,8 +2729,18 @@ border-bottom-left-radius: 10px; padding:5px 10px 10px; z-index:100000; display:
 /* 23-05-2016 */
 .sale1 {background: #00ad08; color: #fff; font: 400 14px/16px "Open Sans",sans-serif; right: 0; padding: 10px; position: absolute; top: 0; width: auto;}
 .stiky-background { background:url(../images/2.06.01_Breitling_BLBack_GEN.jpg); background-repeat:no-repeat; background-size:100% 100%; background-attachment:fixed;}
-/*.the_brand h3 img {margin-top:172px;}
-.explore-brand {margin-top:172px;}*/
+
+
+/* 27-05-2016 */
+.main-right .product_item .product_box_right {min-height:345px;}
+/* //27-05-2016 */
+
+
+
+
+/* RESPONSIVE */
+
+
 
 
 

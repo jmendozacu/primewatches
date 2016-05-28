@@ -65,7 +65,23 @@
 					  <h4><?php echo 'MRP: Rs '.round($product->getPrice()); ?></h4>                   
 					</div>
 					<span class="emi">EMI available</span>
-					<div class="btn btn-success"><a href="#url" class="fancybox fancybox.iframe" onclick="openPopUp('<?php echo addslashes($product->getName());?>-<?php echo $product->getResource()->getAttribute('model_number')->getFrontend()->getValue($product);?>','<?php echo $popimg;?>');">Check our selling price</a></div>
+					<?php $attribute_value = $product->getResource()->getAttribute('inquiry')->getFrontend()->getValue($product);
+		//print_r($attribute_value);//exit;
+		if($attribute_value=='No'){
+		?>
+					<div class="btn btn-success"><a href="#url" onclick="openPopUp('<?php echo $product->getName();?>-<?php echo $product->getResource()->getAttribute('model_number')->getFrontend()->getValue($product);?>','<?php echo $popimg;?>');">Ask For The Best Offer
+</a>	</div>
+<?php //echo $this->getAddToCartUrl($product);exit; ?>
+<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo Mage::helper('checkout/cart')->getAddUrl($product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>	
+<?php } 
+
+		else{
+				
+				?>
+			<a href="#url" onclick="openPopUp('<?php echo $product->getName();?>-<?php echo $product->getResource()->getAttribute('model_number')->getFrontend()->getValue($product);?>','<?php echo $popimg;?>');">Ask For The Best Offer
+</a>	
+			<?php } ?>
+
   			   </div>
                
                 </div>

@@ -83,7 +83,7 @@
 
         <section class="main-container col1-layout">
 
-		<?php $cmsPageUrlKey = Mage::getSingleton('cms/page')->getIdentifier(); ?>
+		<?php  $cmsPageUrlKey = Mage::getSingleton('cms/page')->getIdentifier(); ?>
 
 		<?php if($cmsPageUrlKey == "corporate-orders"){	?>	
 			<div class="concierge_banner_section">
@@ -218,17 +218,17 @@ Remarketing tags may not be associated with personally identifiable information 
 				{
 				   $identifier = Mage::getSingleton('cms/page')->getIdentifier();
 
-				   $ecomm_pagetype = ($identifier == 'no-route')?'home':$identifier;
+				 $ecomm_pagetype = ($identifier == 'no-route')?'home':$identifier;
 				   if($ecomm_pagetype == 'home')
 				     {
                          
-						  $_productCollection = Mage::getModel('catalog/category')->load(112)
+						   $_productCollection = Mage::getModel('catalog/category')->load(112)
 								 ->getProductCollection()
 								 ->addAttributeToSort('name', Varien_Data_Collection::SORT_ORDER_ASC);
 						  $ProductIDs = array();	
 						  $ProductPrice = array();	 
 						  $i=0;
-                          foreach ($_productCollection as $_product): 	
+                         foreach ($_productCollection as $_product): 	
 						     if($i++ == 4) break;
 							 $_product = Mage::getModel('catalog/product')->setStoreId($storeId)->load($_product->getId());	 
 						     $ProductIDs[] = '"'.$_product->getSku().'"'; 
