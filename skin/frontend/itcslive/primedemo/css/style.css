@@ -2736,13 +2736,21 @@ border-bottom-left-radius: 10px; padding:5px 10px 10px; z-index:100000; display:
 /* //27-05-2016 */
 
 
+/* 28-058-2016 */
+.prod-pat-wrap {min-height:338px !important;}
+.prod-pat-wrap .prod-brnd, .prod-pat-wrap .prod-modl, .prod-pat-wrap .prod-mrp {color:#fff;}
+
+.prod-pat-wrap .ratings .rating-box {position:relative; left:35px;}
+
+.main-right .product_item {min-height:284px !important;}
+.main-right .product_item .prod-pat-wrap {min-height:284px !important;}
+
+
+
+
 
 
 /* RESPONSIVE */
-
-
-
-
 
 @media (max-width:480px){
 
