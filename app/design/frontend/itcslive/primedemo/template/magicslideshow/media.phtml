@@ -84,16 +84,7 @@ if(!$this->_isGalleryDisabled) {
 
             }
 
-            list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('thumb', $originalSizeArray);
-
-            $medium = $this->helper('catalog/image')->watermark(null, null)->resize($w, $h)->__toString();
-
-            list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('selector', $originalSizeArray);
-
-            $thumb = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image_file)->resize($w, $h)->__toString();
-
-            $alt = $this->htmlEscape($_image->getLabel());
-
+          
 
 
             $fullscreen = $img;

@@ -90,11 +90,10 @@ if(v=='m'){
 		{
 		   $attribute_value = $attribute ->getFrontend()->getValue($_product);
 		}
-if($attribute_value!='Yes'){
-		
 		?>
-				
-			<?php if(!$_product->isGrouped()): ?>
+		
+		
+		<?php if(!$_product->isGrouped()): ?>
 	
 			<?php /*?><label for="qty"><?php echo $this->__('Qty:') ?></label><?php */?>
 	
@@ -109,6 +108,16 @@ if($attribute_value!='Yes'){
 			</div>
 
         <?php endif; ?>
+		
+		
+		
+		
+			<?php
+if($attribute_value!='Yes'){
+		
+		?>
+				
+			
 
         <div class="cart_btn">
 
@@ -124,14 +133,14 @@ if($attribute_value!='Yes'){
    
     <?php } else{ ?> 
 				
-<div class="cart_btn">
+<!--<div class="cart_btn">
 
 
 		<button type="submit" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart cart-buttons" ><span><span><?php echo $buttonTitle ?></span></span></button>
-</div>
+</div>-->
   
 
-   	<!--<input type="button" name="chksellprice" class="chksellprice" value="Ask For The Best Offer" onclick="openPopUp2();">-->
+   	<input type="button" name="chksellprice" class="chksellprice" value="Ask For The Best Offer" onclick="openPopUp2();">
 
    	<?php } ?>
 
